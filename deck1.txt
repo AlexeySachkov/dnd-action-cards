@@ -1,0 +1,25 @@
+LINK = Untitled.csv
+
+CARDSIZE = 5.7, 8.9
+DPI = 300
+
+
+BORDER = ROUNDED, #404040, 0.15, SOLID
+
+FONT="Mr Eaves SC Remake Medium",12,T,#000000
+TEXT = , [Title], 0, 0, 100%, 10%
+
+IF = B @ [CostIcon]
+POLYGON = , 0.3, 0.2, 0.6, 0.6, 3, 0, #FF6600
+ELSEIF = A @[CostIcon]
+CIRCLE = , 0.3, 0.2, 0.5, 0.5, #006600
+ENDIF
+
+IF = S @ [CostIcon]
+
+POLYGON = , 4.8, 0.15, 0.6, 0.6, 6, 0, ##003366
+FONT="Mr Eaves SC Remake Medium",8,T,#FFFFFF
+TEXT = , [SlotLevel], 4.8, 0.15, 0.6, 0.6
+ENDIF
+
+LINE = , 0.2, 0.81, 5.5, 0.81, #000000, 0.02
