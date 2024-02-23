@@ -42,3 +42,9 @@ This repo is intended to contain all the code and inputs I have for the deck I
 will create with this tool. As you may have guessed, the deck may never be
 complete, but at least for now it is fun digging into the docs and writing
 some code. [Automation](https://xkcd.com/1319/).
+
+## Credits
+
+Dice icons included into the repo were taken from https://game-icons.net/tags/dice.html
+They are distributed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
+according to the website.
