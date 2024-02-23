@@ -5,9 +5,10 @@ CARDSIZE = 5.7, 8.9
 DPI = 300
 
 ; List character's inventory here
-[inventory] = RANGELABEL("Greatsword,Handaxe,Club")
+[inventory] = RANGELABEL("Greatsword,Handaxe,Club,Dagger")
 [to_use] = RANGELABEL(LOOKUP([inventory], [Name]))
 ; Remove the line below to print all the cards
+; TODO: check if it is possible to use LINKFILTER instead
 PRINT = [to_use]
 
 BORDER = ROUNDED, #404040, 0.15, SOLID
@@ -34,15 +35,17 @@ TEXT = , " (with the main hand)", 1.3, 1.06, 50%, 10%, left, top
 ENDIF
 
 ; TODO: A character may not be proficient with a weapon
-[ATK_MOD] = {([STR] - 10) / 2 + [ProficiencyBonus]}
+; TODO: account for finesse weapons which can use DEX
+[ATK_MOD] = {ROUND(([STR] - 10) / 2, 0, DOWN) + [ProficiencyBonus]}
 [positive] = [ATK_MOD]>0
 [negative] = [ATK_MOD]<0
 [sign]%[positive] = " + "
 [sign]%[negative] = " - "
-FONT="Bookinsanity Remake",10,B,#000000
+FONT="Bookinsanity Remake",10,BT,#000000
 [ATK_TEXT] = CONCAT1("d20 ", [sign], CALC(A, [ATK_MOD]))
 ; TODO: dice icon in front of formula
 TEXT = , [ATK_TEXT], 0, 1.45, 100%, 10%, center, top
+IMAGE = , d20.png, 1.7, 1.4, 0.5, 0.5, 0, P
 
 [one_dice] = [DamageDiceMultiplier]=1
 [multiple_dice] = [DamageDiceMultiplier]>1
@@ -55,9 +58,11 @@ FONT="Bookinsanity Remake",10,BT,#000000
 TEXT = , "Damage", 0.2, 1.9, 100%, 20%, left, top
 FONT="Bookinsanity Remake",8,IT,#000000
 TEXT = , JOIN("(", [DamageType], ")"), 1.6, 1.67, 50%, 10%, left top
-[DAMAGE_TEXT] = JOIN([dice_prefix], "d", [DamageDice], " + ", {([STR] - 10) / 2})
-FONT="Bookinsanity Remake",10,B,#000000
-; TODO: dice icon in front of formula
+[DAMAGE_TEXT] = JOIN([dice_prefix], "d", [DamageDice], " + ", {ROUND(([STR] - 10) / 2,0, DOWN)})
+FONT="Bookinsanity Remake",10,BT,#000000
+[img_path] = JOIN("d", [DamageDice], ".png")
+; TODO: if formula is long, it may collide with the dice icon
+IMAGE = , [img_path], 1.7, 2.3, 0.5, 0.5, 0, P
 TEXT = , [DAMAGE_TEXT], 0, 2.35, 100%, 10%, center, top
 
 
