@@ -13,7 +13,7 @@ FOOTER = , [CharacterName], RIGHT
 CARDS = {2 * (Name)}
 
 ; List character's inventory here (comma-separated)
-[inventory] = RANGELABEL("Greataxe,Handaxe,Javelin,Scimitar,Quarterstaff,Blowgun,Greatsword")
+[inventory] = RANGELABEL("Greataxe,Handaxe,Javelin,Quarterstaff,Shortbow")
 ; Sequence of card numbers which are present in the inventory
 [main_indexes_sequence] = LOOKUP([inventory], [Name])
 ; Range of cards which are present in the inventory
@@ -121,7 +121,6 @@ HTMLTEXT = , "<B10>Or, attack</B10> <I8>(use both hands)</I8>", 0.2, 3.15, 80%, 
 HTMLTEXT = , "<center>dice_img20 attack_formula</center>", 0, 3.6, 100%, 10%
 HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 4.1, 80%, 10%
 HTMLTEXT = , "<center>dice_img{{VersatileDamageDice?}} versatile_formula</center>", 0, 4.5, 100%, 10%
-; TODO: versatile thrown weapons (Trident)
 ENDIF
 
 ; TODO: display cost and weight somehow?
@@ -129,12 +128,16 @@ ENDIF
 ; TODO: move this footer a bit lower
 LINE = , 0.2, 7.9, 5.5, 7.9, #000000, 0.02
 FONT="Bookinsanity Remake",10,IT,#000000
-; TODO: display range
 [UPD_Type] = CASESTRING([Type], L)
 [UPD_Proficiency] = CASESTRING([Proficiency], F)
 [top_line] = JOIN([UPD_Proficiency], " ", [UPD_Type], " weapon")
-TEXT = , [top_line], 0, 7.9, 100%, 10%, center, top
+IF = "Ranged" = [Type]
+TEXT = , "{UPD_Proficiency?} {UPD_Type?} weapon ({Range?})", 0, 7.9, 100%, 10%, center, top
+ELSE
+TEXT = , "{UPD_Proficiency?} {UPD_Type?} weapon", 0, 7.9, 100%, 10%, center, top
+ENDIF
 ; ";" can't be used directly, but instead its ANSII encoding should be used
 [UPD_Properties] = CASESTRING(REPLACE([Properties], "\59\", ", "), F)
+[UPD_Properties] = REPLACE([UPD_Properties], "Thrown", "Thrown ({Range?})")
 TEXT = , [UPD_Properties], 0, 8.25, 100%, 10%, center, top
 
