@@ -25,6 +25,8 @@ CIRCLE = , 0.3, 0.2, 0.5, 0.5, #006600
 
 LINE = , 0.2, 0.81, 5.5, 0.81, #000000, 0.02
 
+; TODO: Consider using HTMLTEXT to simplify positioning of phrases of different
+; font size
 FONT="Bookinsanity Remake",10,B,#000000
 TEXT = , "Attack", 0.2, 1, 30%, 10%, left, top
 FONT="Bookinsanity Remake",8,IT,#000000
@@ -34,8 +36,21 @@ ELSE
 TEXT = , " (with the main hand)", 1.3, 1.06, 50%, 10%, left, top
 ENDIF
 
-; TODO: account for finesse weapons which use higher of STR/DEX
-[ATK_ability] = JOINIF(,"ranged", @, [Type], [STR], [DEX])
+[ATK_ability_flag] = JOINIF(, "ranged", @, [Type], "D", "S")
+; Contains (@) doesn't work here, because it expects a sequence on the right,
+; but a weapon properties are represented as a single string
+; [ATK_ability_flag] = JOINIF([ATK_ability_flag], "finesse", @, [Properties], "D")
+[ATK_ability_flag] = JOINIF([ATK_ability_flag], INDEX("finesse", [Properties]), >, 0, "D")
+
+; ranged weapons
+[ATK_ability] = JOINIF(, [ATK_ability_flag], =, "D", [DEX])
+; finesse ranged weapons
+[ATK_ability] = JOINIF([ATK_ability], [ATK_ability_flag], =, "DD", CALC(M, [STR], [DEX]))
+; meleee weapons
+[ATK_ability] = JOINIF([ATK_ability], [ATK_ability_flag], =, "S", [STR])
+; finesse melee weapons
+[ATK_ability] = JOINIF([ATK_ability], [ATK_ability_flag], =, "SD", CALC(M, [STR], [DEX]))
+
 
 ; TODO: A character may not be proficient with a weapon
 [ATK_MOD] = ROUND({([ATK_ability] - 10) / 2 + [ProficiencyBonus]}, 0, DOWN)
@@ -55,7 +70,7 @@ FONT="Bookinsanity Remake",8,IT,#000000
 TEXT = , JOIN("(", [DamageType], ")"), 1.6, 1.67, 50%, 10%, left top
 
 [dice_prefix] = JOINIF(,[DamageDiceMultiplier], >, 1, [DamageDiceMultiplier],)
-[DMG_MOD] = ROUND({([ATK_ABILITY] - 10) / 2}, 0, DOWN)
+[DMG_MOD] = ROUND({([ATK_ability] - 10) / 2}, 0, DOWN)
 [sign] = JOINIF(,[DMG_MOD], >, 0, " + ", "")
 [sign] = JOINIF([sign], [DMG_MOD], <, 0, " - ", "")
 [DAMAGE_TEXT] = JOIN([dice_prefix], "d", [DamageDice], [sign], CALC(A, [DMG_MOD]))

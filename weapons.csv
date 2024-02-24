@@ -4,13 +4,14 @@ Dagger,Melee,Simple,2 gp,1,4,piercing,1,finesse;light;thrown,,,20/60
 Greatclub,Melee,Simple,2 sp,1,8,bludgeoning,10,two-handed,,,
 Handaxe,Melee,Simple,5 gp,1,6,slashing,2,light;thrown,,,20/60
 Javelin,Melee,Simple,5 sp,1,6,piercing,2,thrown,,,20/60
-Light hammer,Melee,Simple,2 gp,1,4,bludgeoning,2,light,thrown,,,20/60
+Light hammer,Melee,Simple,2 gp,1,4,bludgeoning,2,light;thrown,,,20/60
 Mace,Melee,Simple,5 gp,1,6,bludgeoning,4,,,,
 Quarterstaff,Melee,Simple,2 sp,1,6,bludgeoning,4,versatile,1,8,
 Sickle,Melee,Simple,1 gp,1,4,slashing,2,light,,,
 Spear,Melee,Simple,1 gp,1,6,piercing,3,thrown;versatile,1,8,20/60
-Light crossbow,Ranged,Simple,25 gp,1,8,piercing,5,ammunition,loading,two-handed,,,80/320
-Dart,Ranged,Simple,5 cp,1,4,piercing,1/4,finesse,thrown,,,20/60
-Shortbow,Ranged,Simple,25 gp,1,6,piercing,2,ammunition,two-handed,,,80/320
+Light crossbow,Ranged,Simple,25 gp,1,8,piercing,5,ammunition;loading;two-handed,,,80/320
+Dart,Ranged,Simple,5 cp,1,4,piercing,1/4,finesse;thrown,,,20/60
+Shortbow,Ranged,Simple,25 gp,1,6,piercing,2,ammunition;two-handed,,,80/320
 Sling,Ranged,Simple,1 sp,1,4,bludgeoning,,ammunition,,,30/120
 Greatsword,Melee,Martial,50 gp,2,6,slashing,6,heavy;two-handed,,,
+
