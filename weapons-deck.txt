@@ -43,10 +43,12 @@ HTMLIMAGE = , dice_img10, "assets\d10.png", 0.5, 0.5, P
 HTMLIMAGE = , dice_img12, "assets\d12.png", 0.5, 0.5, P
 HTMLIMAGE = , dice_img20, "assets\d20.png", 0.5, 0.5, P
 
-IF = "two-handed" @ [Properties]
-HTMLTEXT = , "<B10>Attack</B10> <I8>(with two hands)</I8>", 0.2, 1, 80%, 10%
+IF = INDEX("two-handed", [Properties]) > 0
+HTMLTEXT = , "<B10>Attack</B10> <I8>(use both hands)</I8>", 0.2, 1, 80%, 10%
+ELSEIF = INDEX("thrown", [Properties]) > 0
+HTMLTEXT = , "<B10>Attack/throw</B10> <I8>(use the main hand)</I8>", 0.2, 1, 100%, 10%
 ELSE
-HTMLTEXT = , "<B10>Attack</B10> <I8>(with the main hand)</I8>", 0.2, 1, 80%, 10%
+HTMLTEXT = , "<B10>Attack</B10> <I8>(use the main hand)</I8>", 0.2, 1, 80%, 10%
 ENDIF
 
 [ATK_ability_flag] = JOINIF(, "ranged", @, [Type], "D", "S")
@@ -93,16 +95,13 @@ ENDIF
 HTMLKEY = , "versatile_formula", JOIN([versatile_dice_prefix], "d", [VersatileDamageDice], [sign], CALC(A, [DMG_MOD])), B10
 
 IF = INDEX("versatile", [Properties]) > 0
-FONT="Bookinsanity Remake",8,IT,#000000
-TEXT = , "(or)", 0, 3.05, 100%, 10%, center, top
-
-HTMLTEXT = , "<B10>Attack</B10> <I8>(with two hands)</I8>", 0.2, 3.55, 80%, 10%
-HTMLTEXT = , "<center>dice_img20 attack_formula</center>", 0, 4, 100%, 10%
-HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 4.5, 80%, 10%
-HTMLTEXT = , "<center>dice_img{{VersatileDamageDice?}} versatile_formula</center>", 0, 4.9, 100%, 10%
+HTMLTEXT = , "<B10>Or, attack</B10> <I8>(use both hands)</I8>", 0.2, 3.15, 80%, 10%
+HTMLTEXT = , "<center>dice_img20 attack_formula</center>", 0, 3.6, 100%, 10%
+HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 4.1, 80%, 10%
+HTMLTEXT = , "<center>dice_img{{VersatileDamageDice?}} versatile_formula</center>", 0, 4.5, 100%, 10%
+; TODO: versatile thrown weapons (Trident)
 ENDIF
 
-; TODO: throw attacks
 ; TODO: minor action card for light weapons in the second hand
 
 ; TODO: display cost and weight somehow?
@@ -110,7 +109,7 @@ ENDIF
 ; TODO: move this footer a bit lower
 LINE = , 0.2, 7.9, 5.5, 7.9, #000000, 0.02
 FONT="Bookinsanity Remake",10,IT,#000000
-
+; TODO: display range
 [UPD_Type] = CASESTRING([Type], L)
 [UPD_Proficiency] = CASESTRING([Proficiency], F)
 [top_line] = JOIN([UPD_Proficiency], " ", [UPD_Type], " weapon")
