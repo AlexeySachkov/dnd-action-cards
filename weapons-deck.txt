@@ -8,7 +8,7 @@ DPI = 300
 FOOTER = , [CharacterName], RIGHT
 
 ; List character's inventory here (comma-separated)
-[inventory] = RANGELABEL("Greataxe,Handaxe,Javelin,Scimitar,Quarterstaff")
+[inventory] = RANGELABEL("Greataxe,Handaxe,Javelin,Scimitar,Quarterstaff,Blowgun")
 [to_use] = RANGELABEL(LOOKUP([inventory], [Name]))
 ; Remove the line below to print all the cards
 ; TODO: check if it is possible to use LINKFILTER instead
@@ -33,6 +33,8 @@ HTMLFONT = I8, "Bookinsanity Remake", 8, I, #000000
 
 ; Image d0 is a placeholders for special weapons that have no damage,
 ; or if their damage is not associated with any dice.
+; TODO: align images with the text better. It may require using a different
+; environment
 HTMLIMAGE = , dice_img0, "assets\d0.png", 0.5, 0.5, P
 HTMLIMAGE = , dice_img4, "assets\d4.png", 0.5, 0.5, P
 HTMLIMAGE = , dice_img6, "assets\d6.png", 0.5, 0.5, P
@@ -71,29 +73,33 @@ ENDIF
 ; Note: 'JOIN' should be used instead of 'CONCAT' is sequences are involved
 HTMLKEY = , "attack_formula", JOIN("d20 ", [sign], CALC(A, [ATK_MOD])), B10
 HTMLTEXT = , "<center>dice_img20 attack_formula</center>", 0, 1.45, 100%, 10%
-HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 1.9, 80%, 10%
+HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 1.95, 80%, 10%
 
-; TODO: weapons with fixed damage (Blowgun)
 ; TODO: weapons with no damage (Net)
 [dice_prefix] = JOINIF(,[DamageDiceMultiplier], >, 1, [DamageDiceMultiplier],)
 [DMG_MOD] = ROUND({([ATK_ability] - 10) / 2}, 0, DOWN)
 [sign] = JOINIF(,[DMG_MOD], >, 0, " + ", "")
 [sign] = JOINIF([sign], [DMG_MOD], <, 0, " - ", "")
-
+IF = [DamageDiceMultiplier] > 0
 HTMLKEY = , "damage_formula", JOIN([dice_prefix], "d", [DamageDice], [sign], CALC(A, [DMG_MOD])), B10
-HTMLTEXT = , "<center>dice_img{{DamageDice?}} damage_formula</center>", 0, 2.35, 100%, 10%
+HTMLTEXT = , "<center>dice_img{{DamageDice?}} damage_formula</center>", 0, 2.4, 100%, 10%
+ELSE
+; TODO: should ability modifier be added to such weapons? (Blowgun)
+HTMLKEY = , "damage_formula", "{{DamageDice?}}", B10
+HTMLTEXT = , "<center>damage_formula</center>", 0, 2.4, 100%, 10%
+ENDIF
 
 [versatile_dice_prefix] = JOINIF(,[VersatileDamageDiceMultiplier], >, 1, [VersatileDamageDiceMultiplier])
 HTMLKEY = , "versatile_formula", JOIN([versatile_dice_prefix], "d", [VersatileDamageDice], [sign], CALC(A, [DMG_MOD])), B10
 
 IF = INDEX("versatile", [Properties]) > 0
 FONT="Bookinsanity Remake",8,IT,#000000
-TEXT = , "(or)", 0, 3, 100%, 10%, center, top
+TEXT = , "(or)", 0, 3.05, 100%, 10%, center, top
 
-HTMLTEXT = , "<B10>Attack</B10> <I8>(with two hands)</I8>", 0.2, 3.5, 80%, 10%
-HTMLTEXT = , "<center>dice_img20 attack_formula</center>", 0, 3.95, 100%, 10%
-HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 4.4, 80%, 10%
-HTMLTEXT = , "<center>dice_img{{VersatileDamageDice?}} versatile_formula</center>", 0, 4.85, 100%, 10%
+HTMLTEXT = , "<B10>Attack</B10> <I8>(with two hands)</I8>", 0.2, 3.55, 80%, 10%
+HTMLTEXT = , "<center>dice_img20 attack_formula</center>", 0, 4, 100%, 10%
+HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 4.5, 80%, 10%
+HTMLTEXT = , "<center>dice_img{{VersatileDamageDice?}} versatile_formula</center>", 0, 4.9, 100%, 10%
 ENDIF
 
 ; TODO: throw attacks
