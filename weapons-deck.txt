@@ -7,9 +7,31 @@ DPI = 300
 
 FOOTER = , [CharacterName], RIGHT
 
+; We generate 2x cards:
+; - the first set is the main one
+; - the second set is for minor action for light weapons
+CARDS = {2 * (Name)}
+
 ; List character's inventory here (comma-separated)
 [inventory] = RANGELABEL("Greataxe,Handaxe,Javelin,Scimitar,Quarterstaff,Blowgun,Greatsword")
-[to_use] = RANGELABEL(LOOKUP([inventory], [Name]))
+; Sequence of card numbers which are present in the inventory
+[main_indexes_sequence] = LOOKUP([inventory], [Name])
+; Range of cards which are present in the inventory
+[main_range] = RANGELABEL([main_indexes_sequence])
+
+; Range of all light weapons
+[light_weapons_range] = LABELRANGE([Properties], "*light*")
+; Range of light weapons which are present in the inventory
+[inventory_light_weapons_range] = RANGEINT([light_weapons_range], [main_range])
+; Same as above, but sequence
+[inventory_light_weapons_sequence] = RANGELABEL([inventory_light_weapons_range])
+
+; Range of cards which are present in the inventory, but taken from the second
+; half of the deck that is intended for bonus action cards (light weapons)
+[bonus_range] = RANGELABEL({RANGELABEL([inventory_light_weapons_sequence]) + (Name)})
+; Merging both ranges
+[to_use] = RANGEINS([main_range], {(inventory)}, [bonus_range], 1)
+
 ; Remove the line below to print all the cards
 ; TODO: check if it is possible to use LINKFILTER instead
 PRINT = [to_use]
@@ -20,11 +42,8 @@ FONT="Mr Eaves SC Remake Medium",12,T,#000000
 TEXT = , [Name], 0, 0, 100%, 10%
 
 ; Icon on the left describing whether this is an Action or a Bonus Action
-; For now only generating main hand/two-hands attacks, which are always Action
-; TODO: somehow generate second card for light weapons with Bonus Action attack
-; using a second hand
-; POLYGON = , 0.3, 0.2, 0.6, 0.6, 3, 0, #FF6600
-CIRCLE = , 0.3, 0.2, 0.5, 0.5, #006600
+POLYGON = [bonus_range], 0.3, 0.2, 0.6, 0.6, 3, 0, #FF6600
+CIRCLE = [main_range], 0.3, 0.2, 0.5, 0.5, #006600
 
 LINE = , 0.2, 0.81, 5.5, 0.81, #000000, 0.02
 
@@ -46,9 +65,11 @@ HTMLIMAGE = , dice_img20, "assets\d20.png", 0.5, 0.5, P
 IF = INDEX("two-handed", [Properties]) > 0
 HTMLTEXT = , "<B10>Attack</B10> <I8>(use both hands)</I8>", 0.2, 1, 80%, 10%
 ELSEIF = INDEX("thrown", [Properties]) > 0
-HTMLTEXT = , "<B10>Attack/throw</B10> <I8>(use the main hand)</I8>", 0.2, 1, 100%, 10%
+HTMLTEXT = [main_range], "<B10>Attack/throw</B10> <I8>(use the main hand)</I8>", 0.2, 1, 100%, 10%
+HTMLTEXT = [bonus_range], "<B10>Attack/throw</B10> <I8>(use the second hand)</I8>", 0.2, 1, 100%, 10%
 ELSE
-HTMLTEXT = , "<B10>Attack</B10> <I8>(use the main hand)</I8>", 0.2, 1, 80%, 10%
+HTMLTEXT = [main_range], "<B10>Attack</B10> <I8>(use the main hand)</I8>", 0.2, 1, 80%, 10%
+HTMLTEXT = [bonus_range], "<B10>Attack</B10> <I8>(use the second hand)</I8>", 0.2, 1, 80%, 10%
 ENDIF
 
 [ATK_ability_flag] = JOINIF(, "ranged", @, [Type], "D", "S")
@@ -83,7 +104,8 @@ HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 1.95, 80%, 10%
 [sign] = JOINIF(,[DMG_MOD], >, 0, " + ", "")
 [sign] = JOINIF([sign], [DMG_MOD], <, 0, " - ", "")
 IF = [DamageDiceMultiplier] > 0
-HTMLKEY = , "damage_formula", JOIN([dice_prefix], "d", [DamageDice], [sign], CALC(A, [DMG_MOD])), B10
+HTMLKEY = [main_range], "damage_formula", JOIN([dice_prefix], "d", [DamageDice], [sign], CALC(A, [DMG_MOD])), B10
+HTMLKEY = [bonus_range], "damage_formula", JOIN([dice_prefix], "d", [DamageDice]), B10
 HTMLTEXT = , "<center>REPEAT(dice_img{{DamageDice?}}, {{DamageDiceMultiplier?}}) damage_formula</center>", 0, 2.4, 100%, 10%
 ELSE
 ; TODO: should ability modifier be added to such weapons? (Blowgun)
@@ -101,8 +123,6 @@ HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 4.1, 80%, 10%
 HTMLTEXT = , "<center>dice_img{{VersatileDamageDice?}} versatile_formula</center>", 0, 4.5, 100%, 10%
 ; TODO: versatile thrown weapons (Trident)
 ENDIF
-
-; TODO: minor action card for light weapons in the second hand
 
 ; TODO: display cost and weight somehow?
 
