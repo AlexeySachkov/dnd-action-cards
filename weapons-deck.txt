@@ -8,7 +8,7 @@ DPI = 300
 FOOTER = , [CharacterName], RIGHT
 
 ; List character's inventory here (comma-separated)
-[inventory] = RANGELABEL("Greataxe,Handaxe,Javelin,Scimitar")
+[inventory] = RANGELABEL("Greataxe,Handaxe,Javelin,Scimitar,Quarterstaff")
 [to_use] = RANGELABEL(LOOKUP([inventory], [Name]))
 ; Remove the line below to print all the cards
 ; TODO: check if it is possible to use LINKFILTER instead
@@ -28,15 +28,15 @@ CIRCLE = , 0.3, 0.2, 0.5, 0.5, #006600
 
 LINE = , 0.2, 0.81, 5.5, 0.81, #000000, 0.02
 
-; TODO: Consider using HTMLTEXT to simplify positioning of phrases of different
-; font size
-FONT="Bookinsanity Remake",10,B,#000000
-TEXT = , "Attack", 0.2, 1, 30%, 10%, left, top
-FONT="Bookinsanity Remake",8,IT,#000000
+; TODO: use HTMLTEXT more extensively
+
+HTMLFONT = B10, "Bookinsanity Remake", 10, B, #000000
+HTMLFONT = I8, "Bookinsanity Remake", 8, I, #000000
+
 IF = "two-handed" @ [Properties]
-TEXT = , " (with two hands)", 1.3, 1.06, 50%, 10%, left, top
+HTMLTEXT = , "<B10>Attack</B10> <I8>(with two hands)</I8>", 0.2, 1, 80%, 10%
 ELSE
-TEXT = , " (with the main hand)", 1.3, 1.06, 50%, 10%, left, top
+HTMLTEXT = , "<B10>Attack</B10> <I8>(with the main hand)</I8>", 0.2, 1, 80%, 10%
 ENDIF
 
 [ATK_ability_flag] = JOINIF(, "ranged", @, [Type], "D", "S")
@@ -65,11 +65,7 @@ FONT="Bookinsanity Remake",10,BT,#000000
 TEXT = , [ATK_TEXT], 0, 1.45, 100%, 10%, center, top
 IMAGE = , assets\d20.png, 1.7, 1.4, 0.5, 0.5, 0, P
 
-
-FONT="Bookinsanity Remake",10,BT,#000000
-TEXT = , "Damage", 0.2, 1.9, 100%, 20%, left, top
-FONT="Bookinsanity Remake",8,IT,#000000
-TEXT = , JOIN("(", [DamageType], ")"), 1.6, 1.67, 50%, 10%, left top
+HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 1.9, 80%, 10%
 
 ; TODO: weapons with fixed damage (Blowgun)
 ; TODO: weapons with no damage (Net)
@@ -91,21 +87,13 @@ IF = INDEX("versatile", [Properties]) > 0
 FONT="Bookinsanity Remake",8,IT,#000000
 TEXT = , "(or)", 0, 3, 100%, 10%, center, top
 
-FONT="Bookinsanity Remake",10,B,#000000
-TEXT = , "Attack", 0.2, 3.5, 30%, 10%, left, top
-
-FONT="Bookinsanity Remake",8,IT,#000000
-TEXT = , " (with two hands)", 1.3, 3.56, 50%, 10%, left, top
+HTMLTEXT = , "<B10>Attack</B10> <I8>(with two hands)</I8>", 0.2, 3.5, 80%, 10%
 
 FONT="Bookinsanity Remake",10,BT,#000000
 TEXT = , [ATK_TEXT], 0, 3.95, 100%, 10%, center, top
 IMAGE = , assets\d20.png, 1.7, 3.9, 0.5, 0.5, 0, P
 
-FONT="Bookinsanity Remake",10,BT,#000000
-TEXT = , "Damage", 0.2, 4.4, 100%, 20%, left, top
-
-FONT="Bookinsanity Remake",8,IT,#000000
-TEXT = , JOIN("(", [DamageType], ")"), 1.6, 4.17, 50%, 10%, left top
+HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 4.4, 80%, 10%
 
 FONT="Bookinsanity Remake",10,BT,#000000
 ; TODO: if formula is long, it may collide with the dice icon
