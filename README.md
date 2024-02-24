@@ -1,16 +1,16 @@
 # dnd-action-cards
 
-[Dungeons and Dragons](https://www.dndbeyond.com) can easily be complicated for a new player,
-especially when it comes to creating characters and figuring out all the attack and damage
-bonues from weapons and spells.
+[Dungeons and Dragons](https://www.dndbeyond.com) can easily be complicated for
+a new player, especially when it comes to creating characters and figuring out
+all the attack and damage bonues from weapons and spells.
 
-Of course, there are many tools to automate that, including ones which track HP of
-characters and enemies and automatically throw dices. However, use of those tools
-inevitable leads to players being distracted merely by presence of an electronic
-device such as a smartphone, tablet, or a laptop. This happens even if players
-are located on the same table in the very same room.
+Of course, there are many tools to automate that, including ones which track HP
+(hit points) of characters and enemies and automatically throw dices. However,
+use of those tools inevitable leads to players being distracted merely by
+presence of an electronic device such as a smartphone, tablet, or a laptop. This
+happens even if players are located on the same table in the very same room.
 
-I recently had an experience fo running a D&D game as a DM for new players and
+I recently had an experience of running a D&D game as a DM for new players and
 I decided to make a small reference cards which would help them with actions
 available to their characters in combat encounters (at least).
 
@@ -19,10 +19,12 @@ rounded rectangles with text in them (aligned using empty lines of different
 line height, yay!). The look like this: ![image](https://github.com/AlexeySachkov/dnd-action-cards/assets/6417047/e99078ff-8c46-4598-b7cc-6560b160a1f4)
 
 They are not really big (56 x 89 millimiters), because I was aiming for
-Wingspan cards size, for which I have [sleeves](https://www.rykergames.com/products/wingspan-card-sleeve-kit).
+[Wingspan](https://boardgamegeek.com/boardgame/266192/wingspan) cards size which
+I have [sleeves](https://www.rykergames.com/products/wingspan-card-sleeve-kit)
+for.
 
-So, I just made a bunch of those for each party member, printed them, cut them
-out and sleeved. The result is actually quite good and it turned out to be pretty
+So, I just made a bunch of those cards for each party member, printed them, cut
+them out and sleeved. The result is quite good and they turned out to be pretty
 useful during the game.
 
 Ping me in issues if you want a photo of a result, I can attach it here.
