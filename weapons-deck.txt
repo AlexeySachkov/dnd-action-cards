@@ -5,7 +5,7 @@ CARDSIZE = 5.7, 8.9
 DPI = 300
 
 ; List character's inventory here
-[inventory] = RANGELABEL("Greatsword,Handaxe,Club,Dagger")
+[inventory] = RANGELABEL("Greatsword,Shortbow,Club,Dagger")
 [to_use] = RANGELABEL(LOOKUP([inventory], [Name]))
 ; Remove the line below to print all the cards
 ; TODO: check if it is possible to use LINKFILTER instead
@@ -34,31 +34,31 @@ ELSE
 TEXT = , " (with the main hand)", 1.3, 1.06, 50%, 10%, left, top
 ENDIF
 
+; TODO: account for finesse weapons which use higher of STR/DEX
+[ATK_ability] = JOINIF(,"ranged", @, [Type], [STR], [DEX])
+
 ; TODO: A character may not be proficient with a weapon
-; TODO: account for finesse weapons which can use DEX
-[ATK_MOD] = {ROUND(([STR] - 10) / 2, 0, DOWN) + [ProficiencyBonus]}
-[positive] = [ATK_MOD]>0
-[negative] = [ATK_MOD]<0
-[sign]%[positive] = " + "
-[sign]%[negative] = " - "
+[ATK_MOD] = ROUND({([ATK_ability] - 10) / 2 + [ProficiencyBonus]}, 0, DOWN)
+[sign] = JOINIF(,[ATK_MOD], >, 0, " + ", "")
+[sign] = JOINIF([sign], [ATK_MOD], <, 0, " - ", "")
 FONT="Bookinsanity Remake",10,BT,#000000
-[ATK_TEXT] = CONCAT1("d20 ", [sign], CALC(A, [ATK_MOD]))
-; TODO: dice icon in front of formula
+; Note: 'JOIN' should be used instead of 'CONCAT' is sequences are involved
+[ATK_TEXT] = JOIN("d20 ", [sign], CALC(A, [ATK_MOD]))
 TEXT = , [ATK_TEXT], 0, 1.45, 100%, 10%, center, top
 IMAGE = , d20.png, 1.7, 1.4, 0.5, 0.5, 0, P
 
-[one_dice] = [DamageDiceMultiplier]=1
-[multiple_dice] = [DamageDiceMultiplier]>1
-[dice_prefix]%[one_dice] = ""
-[dice_prefix]%[multiple_dice] = [DamageDiceMultiplier]
-; FIXME: account for cases when modifier is negative
-; TODO: account for finesse weapons which can use DEX
-; Note: 'JOIN' should be used instead of 'CONCAT' is sequences are involved
+
+
 FONT="Bookinsanity Remake",10,BT,#000000
 TEXT = , "Damage", 0.2, 1.9, 100%, 20%, left, top
 FONT="Bookinsanity Remake",8,IT,#000000
 TEXT = , JOIN("(", [DamageType], ")"), 1.6, 1.67, 50%, 10%, left top
-[DAMAGE_TEXT] = JOIN([dice_prefix], "d", [DamageDice], " + ", {ROUND(([STR] - 10) / 2,0, DOWN)})
+
+[dice_prefix] = JOINIF(,[DamageDiceMultiplier], >, 1, [DamageDiceMultiplier],)
+[DMG_MOD] = ROUND({([ATK_ABILITY] - 10) / 2}, 0, DOWN)
+[sign] = JOINIF(,[DMG_MOD], >, 0, " + ", "")
+[sign] = JOINIF([sign], [DMG_MOD], <, 0, " - ", "")
+[DAMAGE_TEXT] = JOIN([dice_prefix], "d", [DamageDice], [sign], CALC(A, [DMG_MOD]))
 FONT="Bookinsanity Remake",10,BT,#000000
 [img_path] = JOIN("d", [DamageDice], ".png")
 ; TODO: if formula is long, it may collide with the dice icon
