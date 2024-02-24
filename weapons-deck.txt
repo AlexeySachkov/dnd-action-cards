@@ -8,7 +8,7 @@ DPI = 300
 FOOTER = , [CharacterName], RIGHT
 
 ; List character's inventory here (comma-separated)
-[inventory] = RANGELABEL("Greataxe,Handaxe,Javelin,Scimitar,Quarterstaff,Blowgun")
+[inventory] = RANGELABEL("Greataxe,Handaxe,Javelin,Scimitar,Quarterstaff,Blowgun,Greatsword")
 [to_use] = RANGELABEL(LOOKUP([inventory], [Name]))
 ; Remove the line below to print all the cards
 ; TODO: check if it is possible to use LINKFILTER instead
@@ -84,7 +84,7 @@ HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 1.95, 80%, 10%
 [sign] = JOINIF([sign], [DMG_MOD], <, 0, " - ", "")
 IF = [DamageDiceMultiplier] > 0
 HTMLKEY = , "damage_formula", JOIN([dice_prefix], "d", [DamageDice], [sign], CALC(A, [DMG_MOD])), B10
-HTMLTEXT = , "<center>dice_img{{DamageDice?}} damage_formula</center>", 0, 2.4, 100%, 10%
+HTMLTEXT = , "<center>REPEAT(dice_img{{DamageDice?}}, {{DamageDiceMultiplier?}}) damage_formula</center>", 0, 2.4, 100%, 10%
 ELSE
 ; TODO: should ability modifier be added to such weapons? (Blowgun)
 HTMLKEY = , "damage_formula", "{{DamageDice?}}", B10
