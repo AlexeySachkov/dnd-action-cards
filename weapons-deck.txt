@@ -63,12 +63,13 @@ TEXT = , [ATK_TEXT], 0, 1.45, 100%, 10%, center, top
 IMAGE = , d20.png, 1.7, 1.4, 0.5, 0.5, 0, P
 
 
-
 FONT="Bookinsanity Remake",10,BT,#000000
 TEXT = , "Damage", 0.2, 1.9, 100%, 20%, left, top
 FONT="Bookinsanity Remake",8,IT,#000000
 TEXT = , JOIN("(", [DamageType], ")"), 1.6, 1.67, 50%, 10%, left top
 
+; TODO: weapons with fixed damage (Blowgun)
+; TODO: weapons with no damage (Net)
 [dice_prefix] = JOINIF(,[DamageDiceMultiplier], >, 1, [DamageDiceMultiplier],)
 [DMG_MOD] = ROUND({([ATK_ability] - 10) / 2}, 0, DOWN)
 [sign] = JOINIF(,[DMG_MOD], >, 0, " + ", "")
@@ -80,7 +81,11 @@ FONT="Bookinsanity Remake",10,BT,#000000
 IMAGE = , [img_path], 1.7, 2.3, 0.5, 0.5, 0, P
 TEXT = , [DAMAGE_TEXT], 0, 2.35, 100%, 10%, center, top
 
+; TODO: attack with two hands for versatile weapons
+; TODO: throw attacks
+; TODO: minor action card for light weapons in the second hand
 
+; TODO: display cost and weight somehow?
 
 ; TODO: move this footer a bit lower
 LINE = , 0.2, 7.9, 5.5, 7.9, #000000, 0.02
