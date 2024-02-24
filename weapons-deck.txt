@@ -28,10 +28,18 @@ CIRCLE = , 0.3, 0.2, 0.5, 0.5, #006600
 
 LINE = , 0.2, 0.81, 5.5, 0.81, #000000, 0.02
 
-; TODO: use HTMLTEXT more extensively
-
 HTMLFONT = B10, "Bookinsanity Remake", 10, B, #000000
 HTMLFONT = I8, "Bookinsanity Remake", 8, I, #000000
+
+; Image d0 is a placeholders for special weapons that have no damage,
+; or if their damage is not associated with any dice.
+HTMLIMAGE = , dice_img0, "assets\d0.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img4, "assets\d4.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img6, "assets\d6.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img8, "assets\d8.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img10, "assets\d10.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img12, "assets\d12.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img20, "assets\d20.png", 0.5, 0.5, P
 
 IF = "two-handed" @ [Properties]
 HTMLTEXT = , "<B10>Attack</B10> <I8>(with two hands)</I8>", 0.2, 1, 80%, 10%
@@ -59,12 +67,10 @@ ENDIF
 [ATK_MOD] = ROUND({([ATK_ability] - 10) / 2 + [ProficiencyBonus]}, 0, DOWN)
 [sign] = JOINIF(,[ATK_MOD], >, 0, " + ", "")
 [sign] = JOINIF([sign], [ATK_MOD], <, 0, " - ", "")
-FONT="Bookinsanity Remake",10,BT,#000000
-; Note: 'JOIN' should be used instead of 'CONCAT' is sequences are involved
-[ATK_TEXT] = JOIN("d20 ", [sign], CALC(A, [ATK_MOD]))
-TEXT = , [ATK_TEXT], 0, 1.45, 100%, 10%, center, top
-IMAGE = , assets\d20.png, 1.7, 1.4, 0.5, 0.5, 0, P
 
+; Note: 'JOIN' should be used instead of 'CONCAT' is sequences are involved
+HTMLKEY = , "attack_formula", JOIN("d20 ", [sign], CALC(A, [ATK_MOD])), B10
+HTMLTEXT = , "<center>dice_img20 attack_formula</center>", 0, 1.45, 100%, 10%
 HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 1.9, 80%, 10%
 
 ; TODO: weapons with fixed damage (Blowgun)
@@ -73,32 +79,21 @@ HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 1.9, 80%, 10%
 [DMG_MOD] = ROUND({([ATK_ability] - 10) / 2}, 0, DOWN)
 [sign] = JOINIF(,[DMG_MOD], >, 0, " + ", "")
 [sign] = JOINIF([sign], [DMG_MOD], <, 0, " - ", "")
-[DAMAGE_TEXT] = JOIN([dice_prefix], "d", [DamageDice], [sign], CALC(A, [DMG_MOD]))
-FONT="Bookinsanity Remake",10,BT,#000000
-[img_path] = JOIN("assets\d", [DamageDice], ".png")
-; TODO: if formula is long, it may collide with the dice icon
-IMAGE = , [img_path], 1.7, 2.3, 0.5, 0.5, 0, P
-TEXT = , [DAMAGE_TEXT], 0, 2.35, 100%, 10%, center, top
+
+HTMLKEY = , "damage_formula", JOIN([dice_prefix], "d", [DamageDice], [sign], CALC(A, [DMG_MOD])), B10
+HTMLTEXT = , "<center>dice_img{{DamageDice?}} damage_formula</center>", 0, 2.35, 100%, 10%
 
 [versatile_dice_prefix] = JOINIF(,[VersatileDamageDiceMultiplier], >, 1, [VersatileDamageDiceMultiplier])
-[versatile_DAMAGE_TEXT] = JOIN([versatile_dice_prefix], "d", [VersatileDamageDice], [sign], CALC(A, [DMG_MOD]))
-[versatile_img_path] = JOIN("assets\d", [VersatileDamageDice], ".png")
+HTMLKEY = , "versatile_formula", JOIN([versatile_dice_prefix], "d", [VersatileDamageDice], [sign], CALC(A, [DMG_MOD])), B10
+
 IF = INDEX("versatile", [Properties]) > 0
 FONT="Bookinsanity Remake",8,IT,#000000
 TEXT = , "(or)", 0, 3, 100%, 10%, center, top
 
 HTMLTEXT = , "<B10>Attack</B10> <I8>(with two hands)</I8>", 0.2, 3.5, 80%, 10%
-
-FONT="Bookinsanity Remake",10,BT,#000000
-TEXT = , [ATK_TEXT], 0, 3.95, 100%, 10%, center, top
-IMAGE = , assets\d20.png, 1.7, 3.9, 0.5, 0.5, 0, P
-
+HTMLTEXT = , "<center>dice_img20 attack_formula</center>", 0, 3.95, 100%, 10%
 HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 4.4, 80%, 10%
-
-FONT="Bookinsanity Remake",10,BT,#000000
-; TODO: if formula is long, it may collide with the dice icon
-IMAGE = , [versatile_img_path], 1.7, 4.8, 0.5, 0.5, 0, P
-TEXT = , [versatile_DAMAGE_TEXT], 0, 4.85, 100%, 10%, center, top
+HTMLTEXT = , "<center>dice_img{{VersatileDamageDice?}} versatile_formula</center>", 0, 4.85, 100%, 10%
 ENDIF
 
 ; TODO: throw attacks
