@@ -1,6 +1,7 @@
-LINK = Weapons.csv
-LINK = character-a.csv
+LINK = data\Weapons.csv
+LINK = data\character-example.csv
 
+PAGE = 21, 29.7, LANDSCAPE
 CARDSIZE = 5.7, 8.9
 DPI = 300
 
@@ -60,7 +61,7 @@ FONT="Bookinsanity Remake",10,BT,#000000
 ; Note: 'JOIN' should be used instead of 'CONCAT' is sequences are involved
 [ATK_TEXT] = JOIN("d20 ", [sign], CALC(A, [ATK_MOD]))
 TEXT = , [ATK_TEXT], 0, 1.45, 100%, 10%, center, top
-IMAGE = , d20.png, 1.7, 1.4, 0.5, 0.5, 0, P
+IMAGE = , assets\d20.png, 1.7, 1.4, 0.5, 0.5, 0, P
 
 
 FONT="Bookinsanity Remake",10,BT,#000000
@@ -76,14 +77,14 @@ TEXT = , JOIN("(", [DamageType], ")"), 1.6, 1.67, 50%, 10%, left top
 [sign] = JOINIF([sign], [DMG_MOD], <, 0, " - ", "")
 [DAMAGE_TEXT] = JOIN([dice_prefix], "d", [DamageDice], [sign], CALC(A, [DMG_MOD]))
 FONT="Bookinsanity Remake",10,BT,#000000
-[img_path] = JOIN("d", [DamageDice], ".png")
+[img_path] = JOIN("assets\d", [DamageDice], ".png")
 ; TODO: if formula is long, it may collide with the dice icon
 IMAGE = , [img_path], 1.7, 2.3, 0.5, 0.5, 0, P
 TEXT = , [DAMAGE_TEXT], 0, 2.35, 100%, 10%, center, top
 
 [versatile_dice_prefix] = JOINIF(,[VersatileDamageDiceMultiplier], >, 1, [VersatileDamageDiceMultiplier])
 [versatile_DAMAGE_TEXT] = JOIN([versatile_dice_prefix], "d", [VersatileDamageDice], [sign], CALC(A, [DMG_MOD]))
-[versatile_img_path] = JOIN("d", [VersatileDamageDice], ".png")
+[versatile_img_path] = JOIN("assets\d", [VersatileDamageDice], ".png")
 IF = INDEX("versatile", [Properties]) > 0
 FONT="Bookinsanity Remake",8,IT,#000000
 TEXT = , "(or)", 0, 3, 100%, 10%, center, top
@@ -96,7 +97,7 @@ TEXT = , " (with two hands)", 1.3, 3.56, 50%, 10%, left, top
 
 FONT="Bookinsanity Remake",10,BT,#000000
 TEXT = , [ATK_TEXT], 0, 3.95, 100%, 10%, center, top
-IMAGE = , d20.png, 1.7, 3.9, 0.5, 0.5, 0, P
+IMAGE = , assets\d20.png, 1.7, 3.9, 0.5, 0.5, 0, P
 
 FONT="Bookinsanity Remake",10,BT,#000000
 TEXT = , "Damage", 0.2, 4.4, 100%, 20%, left, top
