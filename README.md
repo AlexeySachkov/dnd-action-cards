@@ -1,6 +1,18 @@
 # dnd-action-cards
 
-[Dungeons and Dragons](https://www.dndbeyond.com) can easily be complicated for
+A set of [nanDECK](https://www.nandeck.com/) scripts to generate various cards
+for [Dungeons and Dragons](https://www.dndbeyond.com).
+
+# Table of contents
+
+* [Intro](#intro)
+* [Current status](#current-status)
+* [Future plans](#future-plans)
+* [Credits](#credits)
+
+## Intro
+
+[D&D](https://www.dndbeyond.com) can easily be complicated for
 a new player, especially when it comes to creating characters and figuring out
 all the attack and damage bonues from weapons and spells.
 
@@ -44,6 +56,21 @@ This repo is intended to contain all the code and inputs I have for the deck I
 will create with this tool. As you may have guessed, the deck may never be
 complete, but at least for now it is fun digging into the docs and writing
 some code. [Automation](https://xkcd.com/1319/).
+
+## Current status
+
+[weapons-deck](weapons-deck.txt) script is capable of generating cards for all
+weapons (non-magical) listed in PHB (Player's Handbook). There are some `TODO`s
+here and there and things which can be improved, but the basic functionality
+is there.
+
+## Future plans
+
+* See all `TODO`s there are in the scripts
+* Support for feats (racial, class, etc.)
+* Support for magic weapons
+* Support for magic items
+* Support for spells
 
 ## Credits
 
