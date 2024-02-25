@@ -72,8 +72,21 @@ is there.
 * Support for magic items
 * Support for spells
 
-## Credits
+## License
 
-Dice icons included into the repo were taken from https://game-icons.net/tags/dice.html
-They are distributed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
-according to the website.
+Documentation and source code for `nanDECK` scripts is licensed under
+[MIT License](LICENSE).
+
+However, the repo contains some 3rd-party assets which may be licensed
+differently. Their license and credits are noted in
+[`assets/README.md`](assets/README.md).
+
+This work includes material taken from the System Reference Document 5.1
+(“SRD 5.1”) by Wizards of the Coast LLC and available at
+https://dnd.wizards.com/resources/systems-reference-document. The SRD 5.1 is
+licensed under the Creative Commons Attribution 4.0 International License
+available at https://creativecommons.org/licenses/by/4.0/legalcode.
+
+The statement above is related to [`data/`](data/) folder that includes both
+user-created content (like character sheets and custom magic items) and
+information from the SRD 5.1 (like weapons and armor stats).
