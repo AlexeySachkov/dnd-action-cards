@@ -1,0 +1,13 @@
+Name,Kind,Cost,AC,DexModifierApplies,DexModifierMaxEffect,StrengthRequirements,DisadvantageInStealth,Weight
+Padded armor,Light,5 gp,11,Y,,,Y,8
+Leather armor,Light,10 gp,11,Y,,,N,10
+Studded leather armor,Light,45 gp,12,Y,,,N,13
+Hide armor,Medium,10 gp,12,Y,2,,N,12
+Chain shirt,Medium,50 gp,13,Y,2,,N,20
+Scale mail,Medium,50 gp,14,Y,2,,Y,45
+Breastplate,Medium,400 gp,14,Y,2,,N,20
+Half plate,Medium,750 gp,15,Y,2,,Y,40
+Ring mail,Heavy,30 gp,14,N,,,Y,40
+Chain mail,Heavy,75 gp,16,N,,13,Y,55
+Splint armor,Heavy,200 gp,17,N,,15,Y,60
+Plate armor,Heavy,1500 gp,18,N,,15,Y,65

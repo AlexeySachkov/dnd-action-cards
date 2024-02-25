@@ -1,0 +1,56 @@
+LINK = data\armor.csv
+LINK = data\Orianna.csv
+
+PAGE = 21, 29.7, LANDSCAPE
+CARDSIZE = 5.7, 8.9
+DPI = 300
+
+FOOTER = , [CharacterName], RIGHT
+
+
+; List character's inventory here (comma-separated)
+; FIXME: this filter doesn't work due to spaces in [Name]
+[inventory] = RANGELABEL("Hide\32\armor")
+; Sequence of card numbers which are present in the inventory
+[main_indexes_sequence] = LOOKUP([inventory], [Name])
+; Range of cards which are present in the inventory
+[main_range] = RANGELABEL([main_indexes_sequence])
+[to_use] = [main_range]
+; Remove the line below to print all the cards
+; TODO: check if it is possible to use LINKFILTER instead
+PRINT = [to_use]
+
+BORDER = ROUNDED, #404040, 0.15, SOLID
+
+FONT="Mr Eaves SC Remake Medium",12,T,#000000
+TEXT = , [Name], 0, 0, 100%, 10%
+
+LINE = , 0.2, 0.81, 5.5, 0.81, #000000, 0.02
+
+HTMLFONT = B10, "Bookinsanity Remake", 10, B, #000000
+HTMLFONT = R10, "Bookinsanity Remake", 10, , #000000
+HTMLFONT = I8, "Bookinsanity Remake", 8, I, #000000
+
+; TODO: A character may not be proficient with an armor
+
+[DEX_MOD] = ROUND({([DEX] - 10) / 2}, 0, DOWN)
+[Limited_DEX_MOD] = JOINIF(, [DexModifierMaxEffect], >, 0, CALC(N, [DEX_MOD], [DexModifierMaxEffect]), [DEX_MOD])
+[Computed_AC] = JOINIF(, [DexModifierApplies], =, "Y", {[AC] + [Limited_DEX_MOD]}, [AC])
+
+HTMLTEXT = , "<B10>Armor class:</B10> <R10>{{Computed_AC?}}</R10>", 0.2, 1, 80%, 10%
+IF = [StrengthRequirements] > 0
+HTMLTEXT = , "<B10>Requirements:</B10> <R10>{{StrengthRequirements?}} STR</R10>", 0.2, 1.5, 80%, 10%
+ENDIF
+
+IF = [DisadvantageInStealth] = "Y"
+HTMLTEXT = , "<R10>While wearing this set of armor you have disadvantage on <b>Dexterity (Stealth)</b> checks</R10>", 0.2, 2, 80%, 20%
+ENDIF
+
+HTMLFONT = R8, "Bookinsanity Remake", 8, , #000000
+HTMLFONT = B8, "Bookinsanity Remake", 8, B, #000000
+HTMLTEXT = , "<B8>Cost:</B8> <R8>{{Cost?}}</R8><br><B8>Weight:</B8> <R8>{{Weight?}} lb.</R8>", 0.2, 6.9, 100%, 10%
+
+; TODO: move this footer a bit lower
+LINE = , 0.2, 7.9, 5.5, 7.9, #000000, 0.02
+FONT="Bookinsanity Remake",10,IT,#000000
+TEXT = , "{Kind?} armor", 0, 7.9, 100%, 10%, center, top
