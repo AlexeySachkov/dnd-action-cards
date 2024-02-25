@@ -1,5 +1,6 @@
 LINK = data\armor.csv
-LINK = data\Orianna.csv
+LINK = data\Nala-Drachedandion.csv
+LINK = data\Nala-Drachedandion-inventory.csv
 
 PAGE = 21, 29.7, LANDSCAPE
 CARDSIZE = 5.7, 8.9
@@ -7,12 +8,8 @@ DPI = 300
 
 FOOTER = , [CharacterName], RIGHT
 
-
-; List character's inventory here (comma-separated)
-; FIXME: this filter doesn't work due to spaces in [Name]
-[inventory] = RANGELABEL("Hide\32\armor")
 ; Sequence of card numbers which are present in the inventory
-[main_indexes_sequence] = LOOKUP([inventory], [Name])
+[main_indexes_sequence] = LOOKUP([ItemName], [Name])
 ; Range of cards which are present in the inventory
 [main_range] = RANGELABEL([main_indexes_sequence])
 [to_use] = [main_range]
