@@ -1,5 +1,6 @@
 LINK = data\Weapons.csv
 LINK = data\Orianna.csv
+LINK = data\Orianna-inventory.csv
 
 PAGE = 21, 29.7, LANDSCAPE
 CARDSIZE = 5.7, 8.9
@@ -13,9 +14,9 @@ FOOTER = , [CharacterName], RIGHT
 CARDS = {2 * (Name)}
 
 ; List character's inventory here (comma-separated)
-[inventory] = RANGELABEL("Greataxe,Handaxe,Javelin,Quarterstaff,Shortbow")
+; [inventory] = RANGELABEL("Greataxe,Handaxe,Javelin,Quarterstaff,Shortbow")
 ; Sequence of card numbers which are present in the inventory
-[main_indexes_sequence] = LOOKUP([inventory], [Name])
+[main_indexes_sequence] = LOOKUP([ItemName], [Name])
 ; Range of cards which are present in the inventory
 [main_range] = RANGELABEL([main_indexes_sequence])
 
@@ -28,9 +29,9 @@ CARDS = {2 * (Name)}
 
 ; Range of cards which are present in the inventory, but taken from the second
 ; half of the deck that is intended for bonus action cards (light weapons)
-[bonus_range] = RANGELABEL({RANGELABEL([inventory_light_weapons_sequence]) + (Name)})
+[bonus_range] = RANGELABEL({[inventory_light_weapons_sequence] + (Name)})
 ; Merging both ranges
-[to_use] = RANGEINS([main_range], {(inventory)}, [bonus_range], 1)
+[to_use] = RANGEINS([main_range], {(ItemName)}, [bonus_range], 1)
 
 ; Remove the line below to print all the cards
 ; TODO: check if it is possible to use LINKFILTER instead
