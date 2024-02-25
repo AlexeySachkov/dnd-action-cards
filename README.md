@@ -87,6 +87,8 @@ https://dnd.wizards.com/resources/systems-reference-document. The SRD 5.1 is
 licensed under the Creative Commons Attribution 4.0 International License
 available at https://creativecommons.org/licenses/by/4.0/legalcode.
 
-The statement above is related to [`data/`](data/) folder that includes both
-user-created content (like character sheets and custom magic items) and
-information from the SRD 5.1 (like weapons and armor stats).
+The statement above is related to [`data/`](data/) folder that includes
+information from the SRD 5.1 (like weapons and armor stats). That folder also
+contains user-created content (like custom magic items) and that content is
+licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode).
