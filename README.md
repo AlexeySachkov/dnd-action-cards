@@ -60,9 +60,20 @@ some code. [Automation](https://xkcd.com/1319/).
 ## Current status
 
 [weapons-deck](weapons-deck.txt) script is capable of generating cards for all
-weapons (non-magical) listed in PHB (Player's Handbook). There are some `TODO`s
+weapons (non-magical) available in [SRD](srd). There are some `TODO`s
 here and there and things which can be improved, but the basic functionality
 is there.
+
+[armor-deck](armor-deck.txt) script is capable of generating cards for all
+armor (non-magical) available in [SRD](srd).
+
+Both scripts generate cards which are tailored to specific character and they
+use two auxiliary data sources for that:
+
+- "character sheet" describing character stats. [Example](data/Orianna.csv)
+- character inventory. [Example](data/Orianna-inventory.csv)
+
+[srd]: https://dnd.wizards.com/resources/systems-reference-document
 
 ## Future plans
 
