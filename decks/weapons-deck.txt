@@ -1,6 +1,6 @@
-LINK = data\Weapons.csv
-LINK = data\Orianna.csv
-LINK = data\Orianna-inventory.csv
+LINK = ..\data\Weapons.csv
+LINK = ..\data\Orianna.csv
+LINK = ..\data\Orianna-inventory.csv
 
 PAGE = 21, 29.7, LANDSCAPE
 CARDSIZE = 5.7, 8.9
@@ -55,13 +55,13 @@ HTMLFONT = I8, "Bookinsanity Remake", 8, I, #000000
 ; or if their damage is not associated with any dice.
 ; TODO: align images with the text better. It may require using a different
 ; environment
-HTMLIMAGE = , dice_img0, "assets\d0.png", 0.5, 0.5, P
-HTMLIMAGE = , dice_img4, "assets\d4.png", 0.5, 0.5, P
-HTMLIMAGE = , dice_img6, "assets\d6.png", 0.5, 0.5, P
-HTMLIMAGE = , dice_img8, "assets\d8.png", 0.5, 0.5, P
-HTMLIMAGE = , dice_img10, "assets\d10.png", 0.5, 0.5, P
-HTMLIMAGE = , dice_img12, "assets\d12.png", 0.5, 0.5, P
-HTMLIMAGE = , dice_img20, "assets\d20.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img0, "..\assets\d0.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img4, "..\assets\d4.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img6, "..\assets\d6.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img8, "..\assets\d8.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img10, "..\assets\d10.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img12, "..\assets\d12.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img20, "..\assets\d20.png", 0.5, 0.5, P
 
 IF = INDEX("two-handed", [Properties]) > 0
 HTMLTEXT = , "<B10>Attack</B10> <I8>(use both hands)</I8>", 0.2, 1, 80%, 10%
