@@ -1,6 +1,6 @@
-LINK = ..\data\Weapons.csv
-LINK = ..\data\Orianna.csv
-LINK = ..\data\Orianna-inventory.csv
+LINK = ..\data\magic-weapons-1.csv
+LINK = ..\data\Nala-Drachedandion.csv
+LINK = ..\data\Nala-Drachedandion-inventory.csv
 
 PAGE = 21, 29.7, LANDSCAPE
 CARDSIZE = 5.7, 8.9
@@ -24,14 +24,24 @@ CARDS = {2 * (Name)}
 [light_weapons_range] = LABELRANGE([Properties], "*light*")
 ; Range of light weapons which are present in the inventory
 [inventory_light_weapons_range] = RANGEINT([light_weapons_range], [main_range])
+; If character has no light weapons in their inventory, the range above will be
+; empty and it won't be possible to convert it to a sequence using RANGELABEL
+; function
+[light_weapons_in_inventory] = RANGECOUNT([inventory_light_weapons_range])>0
+
 ; Same as above, but sequence
-[inventory_light_weapons_sequence] = RANGELABEL([inventory_light_weapons_range])
+[inventory_light_weapons_sequence]%[light_weapons_in_inventory] = RANGELABEL([inventory_light_weapons_range])
+[inventory_light_weapons_sequence]%=
 
 ; Range of cards which are present in the inventory, but taken from the second
 ; half of the deck that is intended for bonus action cards (light weapons)
-[bonus_range] = RANGELABEL({[inventory_light_weapons_sequence] + (Name)})
+[bonus_range]%[light_weapons_in_inventory] = RANGELABEL({[inventory_light_weapons_sequence] + (Name)})
+; Some fake value, so that we don't apply text for bonus cards to main cards
+[bonus_range]%= {2 * (Name)}
+
 ; Merging both ranges
-[to_use] = RANGEINS([main_range], {(ItemName)}, [bonus_range], 1)
+[to_use]%[light_weapons_in_inventory] = RANGEINS([main_range], {(ItemName)}, [bonus_range], 1)
+[to_use]%= [main_range]
 
 ; Remove the line below to print all the cards
 ; TODO: check if it is possible to use LINKFILTER instead
