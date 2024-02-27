@@ -59,6 +59,7 @@ CIRCLE = [main_range], 0.3, 0.2, 0.5, 0.5, #006600
 LINE = , 0.2, 0.81, 5.5, 0.81, #000000, 0.02
 
 HTMLFONT = B10, "Bookinsanity Remake", 10, B, #000000
+HTMLFONT = R8, "Bookinsanity Remake", 8, , #000000
 HTMLFONT = I8, "Bookinsanity Remake", 8, I, #000000
 
 ; Image d0 is a placeholders for special weapons that have no damage,
@@ -100,7 +101,7 @@ ENDIF
 
 
 ; TODO: A character may not be proficient with a weapon
-[ATK_MOD] = ROUND({([ATK_ability] - 10) / 2 + [ProficiencyBonus]}, 0, DOWN)
+[ATK_MOD] = ROUND({([ATK_ability] - 10) / 2 + [ProficiencyBonus] + [Bonus]}, 0, DOWN)
 [sign] = JOINIF(,[ATK_MOD], >, 0, " + ", "")
 [sign] = JOINIF([sign], [ATK_MOD], <, 0, " - ", "")
 
@@ -111,7 +112,7 @@ HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 1.95, 80%, 10%
 
 ; TODO: weapons with no damage (Net)
 [dice_prefix] = JOINIF(,[DamageDiceMultiplier], >, 1, [DamageDiceMultiplier],)
-[DMG_MOD] = ROUND({([ATK_ability] - 10) / 2}, 0, DOWN)
+[DMG_MOD] = ROUND({([ATK_ability] - 10) / 2 + [Bonus]}, 0, DOWN)
 [sign] = JOINIF(,[DMG_MOD], >, 0, " + ", "")
 [sign] = JOINIF([sign], [DMG_MOD], <, 0, " - ", "")
 IF = [DamageDiceMultiplier] > 0
@@ -132,6 +133,10 @@ HTMLTEXT = , "<B10>Or, attack</B10> <I8>(use both hands)</I8>", 0.2, 3.15, 80%, 
 HTMLTEXT = , "<center>dice_img20 attack_formula</center>", 0, 3.6, 100%, 10%
 HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 4.1, 80%, 10%
 HTMLTEXT = , "<center>dice_img{{VersatileDamageDice?}} versatile_formula</center>", 0, 4.5, 100%, 10%
+HTMLTEXT = , "<R8>{{ExtraText?}}</R8>", 0.2, 5.2, 5.3, 30%
+ELSE
+; TODO: develop a mechanism to automatically calculate Y position
+HTMLTEXT = , "<R8>{{ExtraText?}}</R8>", 0.2, 3, 5.3, 30%
 ENDIF
 
 ; TODO: display cost and weight somehow?
