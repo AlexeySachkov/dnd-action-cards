@@ -1,38 +1,38 @@
-Name,Type,Proficiency,Cost,DamageDiceMultiplier,DamageDice,DamageType,Weight,Properties,VersatileDamageDiceMultiplier,VersatileDamageDice,Range
-Club,Melee,Simple,1 sp,1,4,bludgeoning,2,light,,,
-Dagger,Melee,Simple,2 gp,1,4,piercing,1,finesse\59\light\59\thrown,,,20/60
-Greatclub,Melee,Simple,2 sp,1,8,bludgeoning,10,two-handed,,,
+Name,Type,Proficiency,Cost,DamageDiceMultiplier,DamageDice,DamageType,Weight,Properties,VersatileDamageDiceMultiplier,VersatileDamageDice,Range,Bonus,Rarity,ExtraText
+Club,Melee,Simple,1 sp,1,4,bludgeoning,2,light,,,,,,
+Dagger,Melee,Simple,2 gp,1,4,piercing,1,finesse\59\light\59\thrown,,,20/60,,,
+Greatclub,Melee,Simple,2 sp,1,8,bludgeoning,10,two-handed,,,,,,
 Handaxe,Melee,Simple,5 gp,1,6,slashing,2,light\59\thrown,,,20/60
-Javelin,Melee,Simple,5 sp,1,6,piercing,2,thrown,,,20/60
-Light hammer,Melee,Simple,2 gp,1,4,bludgeoning,2,light\59\thrown,,,20/60
-Mace,Melee,Simple,5 gp,1,6,bludgeoning,4,,,,
-Quarterstaff,Melee,Simple,2 sp,1,6,bludgeoning,4,versatile,1,8,
-Sickle,Melee,Simple,1 gp,1,4,slashing,2,light,,,
-Spear,Melee,Simple,1 gp,1,6,piercing,3,thrown\59\versatile,1,8,20/60
-Light crossbow,Ranged,Simple,25 gp,1,8,piercing,5,ammunition\59\loading\59\two-handed,,,80/320
-Dart,Ranged,Simple,5 cp,1,4,piercing,1/4,finesse\59\thrown,,,20/60
-Shortbow,Ranged,Simple,25 gp,1,6,piercing,2,ammunition\59\two-handed,,,80/320
-Sling,Ranged,Simple,1 sp,1,4,bludgeoning,,ammunition,,,30/120
+Javelin,Melee,Simple,5 sp,1,6,piercing,2,thrown,,,20/60,,,
+Light hammer,Melee,Simple,2 gp,1,4,bludgeoning,2,light\59\thrown,,,20/60,,,
+Mace,Melee,Simple,5 gp,1,6,bludgeoning,4,,,,,,,
+Quarterstaff,Melee,Simple,2 sp,1,6,bludgeoning,4,versatile,1,8,,,,
+Sickle,Melee,Simple,1 gp,1,4,slashing,2,light,,,,,,
+Spear,Melee,Simple,1 gp,1,6,piercing,3,thrown\59\versatile,1,8,20/60,,,
+Light crossbow,Ranged,Simple,25 gp,1,8,piercing,5,ammunition\59\loading\59\two-handed,,,80/320,,,
+Dart,Ranged,Simple,5 cp,1,4,piercing,1/4,finesse\59\thrown,,,20/60,,,
+Shortbow,Ranged,Simple,25 gp,1,6,piercing,2,ammunition\59\two-handed,,,80/320,,,
+Sling,Ranged,Simple,1 sp,1,4,bludgeoning,,ammunition,,,30/120,,,
 Battleaxe,Melee,Martial,10 gp,1,8,slashing,4,versatile,1,10,
-Flail,Melee,Martial,10 gp,1,8,bludgeoning,2,,,,
-Glaive,Melee,Martial,20 gp,1,10,slashing,6,heavy\59\reach\59\two-handed,,,
-Greataxe,Melee,Martial,30 gp,1,12,slashing,7,heavy\59\two-handed,,,
-Greatsword,Melee,Martial,50 gp,2,6,slashing,6,heavy\59\two-handed,,,
-Halberd,Melee,Martial,20 gp,1,10,slashing,6,heavy\59\reach\59\two-handed,,,
-Lance,Melee,Martial,10 gp,1,12,piercing,6,reach\59\special,,,
-Longsword,Melee,Martial,15 gp,1,8,slashing,3,versatile,1,10,
-Maul,Melee,Martial,10 gp,2,6,bludgeoning,10,heavy\59\two-handed,,,
-Morningstar,Melee,Martial,15 gp,1,8,piercing,4,,,,
-Pike,Melee,Martial,5 gp,1,10,piercing,18,heavy\59\readh\59\two-handed,,,
-Rapier,Melee,Martial,25 gp,1,8,piercing,2,finesse,,,
-Scimitar,Melee,Martial,25 gp,1,6,slashing,3,finesse\59\light,,,
-Shortsword,Melee,Martial,10 gp,1,6,piercing,2,finesse\59\light,,,
-Trident,Melee,Martial,5 gp,1,6,piercing,4,thrown\59\versatile,1,8,20/60
-War pick,Melee,Martial,5 gp,1,8,piercing,2,,,,
-Warhammer,Melee,Martial,15 gp,1,8,bludgeoning,2,versatile,1,10,
-Whip,Melee,Martial,2 gp,1,4,slashing,3,finesse\59\reach,,,
-Blowgun,Ranged,Martial,10 gp,0,1,piercing,1,ammunition\59\loading,,,25/100
-Hand crossbow,Ranged,Martial,75 gp,1,6,piercing,3,ammunition\59\light\59\loading,,,30/120
-Heavy crossbow,Ranged,Martial,50 gp,1,10,piercing,18,ammunition\59\heavy\59\loading\59\two-handed,,,100/400
+Flail,Melee,Martial,10 gp,1,8,bludgeoning,2,,,,,,,
+Glaive,Melee,Martial,20 gp,1,10,slashing,6,heavy\59\reach\59\two-handed,,,,,,
+Greataxe,Melee,Martial,30 gp,1,12,slashing,7,heavy\59\two-handed,,,,,,
+Greatsword,Melee,Martial,50 gp,2,6,slashing,6,heavy\59\two-handed,,,,,,
+Halberd,Melee,Martial,20 gp,1,10,slashing,6,heavy\59\reach\59\two-handed,,,,,,
+Lance,Melee,Martial,10 gp,1,12,piercing,6,reach\59\special,,,,,,
+Longsword,Melee,Martial,15 gp,1,8,slashing,3,versatile,1,10,,,,
+Maul,Melee,Martial,10 gp,2,6,bludgeoning,10,heavy\59\two-handed,,,,,,
+Morningstar,Melee,Martial,15 gp,1,8,piercing,4,,,,,,,
+Pike,Melee,Martial,5 gp,1,10,piercing,18,heavy\59\readh\59\two-handed,,,,,,
+Rapier,Melee,Martial,25 gp,1,8,piercing,2,finesse,,,,,,
+Scimitar,Melee,Martial,25 gp,1,6,slashing,3,finesse\59\light,,,,,,
+Shortsword,Melee,Martial,10 gp,1,6,piercing,2,finesse\59\light,,,,,,
+Trident,Melee,Martial,5 gp,1,6,piercing,4,thrown\59\versatile,1,8,20/60,,,
+War pick,Melee,Martial,5 gp,1,8,piercing,2,,,,,,,
+Warhammer,Melee,Martial,15 gp,1,8,bludgeoning,2,versatile,1,10,,,,
+Whip,Melee,Martial,2 gp,1,4,slashing,3,finesse\59\reach,,,,,,
+Blowgun,Ranged,Martial,10 gp,0,1,piercing,1,ammunition\59\loading,,,25/100,,,
+Hand crossbow,Ranged,Martial,75 gp,1,6,piercing,3,ammunition\59\light\59\loading,,,30/120,,,
+Heavy crossbow,Ranged,Martial,50 gp,1,10,piercing,18,ammunition\59\heavy\59\loading\59\two-handed,,,100/400,,,
 Longbow,Ranged,Martial,50 gp,1,8,piercing,2,ammunition\59\heavy\59\two-handed,,,150/600
-Net,Ranged,Martial,1 gp,0,0,,3,special\59\thrown,,,5/15
+Net,Ranged,Martial,1 gp,0,0,,3,special\59\thrown,,,5/15,,,
