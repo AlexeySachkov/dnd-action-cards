@@ -63,27 +63,32 @@ some code. [Automation](https://xkcd.com/1319/).
 
 ## Current status
 
-[weapons-deck](weapons-deck.txt) script is capable of generating cards for all
-weapons (non-magical) available in [SRD](srd). There are some `TODO`s
-here and there and things which can be improved, but the basic functionality
-is there.
+The project features two decks at the moment:
+- [weapons deck](decks/weapons-deck.txt) which is capable of generating cards
+  for all non-magical weapons available in [SRD][srd] and custom magic weapons.
+- [armor deck](decks/armor-deck.txt) which is capable of generating cards for
+  all non-magical armor available in [SRD][srd].
 
-[armor-deck](armor-deck.txt) script is capable of generating cards for all
-armor (non-magical) available in [SRD](srd).
+Both decks use a character data as an input and tailor generated cards to that
+character. This includes automaticaly calculating all attack and damage bonuses,
+automatically calculating armor class and filtering cards to only generate cards
+for those items, which are present in a character's inventory.
 
-Both scripts generate cards which are tailored to specific character and they
-use two auxiliary data sources for that:
-
-- "character sheet" describing character stats. [Example](data/Orianna.csv)
-- character inventory. [Example](data/Orianna-inventory.csv)
+See example of a ["character sheet"](data/Orianna.csv) and of a
+[character inventory](data/Orianna-inventory.csv).
 
 [srd]: https://dnd.wizards.com/resources/systems-reference-document
 
 ## Future plans
 
+In no particular order:
+
 * See all `TODO`s there are in the scripts
+* Instructions on how to use those scripts
+* Instructions on how to customize them for your needs
+* Documentation on `.csv` files format
+* Customization options for cards (like no dice icons, different card size)
 * Support for feats (racial, class, etc.)
-* Support for magic weapons
 * Support for magic items
 * Support for spells
 
