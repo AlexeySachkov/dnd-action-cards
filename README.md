@@ -39,7 +39,11 @@ So, I just made a bunch of those cards for each party member, printed them, cut
 them out and sleeved. The result is quite good and they turned out to be pretty
 useful during the game.
 
-Ping me in issues if you want a photo of a result, I can attach it here.
+![IMG_6490 Large](https://github.com/AlexeySachkov/dnd-action-cards/assets/6417047/52ced16d-4242-4c62-b530-ebce52067b34)
+
+_Left to right: original cards I did (scale was screwed up during printing),
+a version using a better printer (and the correct scale),
+a version produced by this script (not the latest one of course)_
 
 Going forward, we have decided to continue playing with that party for at least
 a few more sessions and characters are going to level up and change slightly.
