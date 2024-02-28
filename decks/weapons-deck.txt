@@ -43,6 +43,7 @@ CARDS = {2 * (Name)}
 
 ; Remove the line below to print all the cards
 ; TODO: check if it is possible to use LINKFILTER instead
+RENDER = ,,,[to_use]
 PRINT = [to_use]
 
 BORDER = ROUNDED, #404040, 0.15, SOLID
