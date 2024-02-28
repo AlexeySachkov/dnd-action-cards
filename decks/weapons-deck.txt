@@ -1,4 +1,5 @@
 LINK = ..\data\magic-weapons-1.csv
+; LINK = ..\data\Weapons.csv
 LINK = ..\data\Nala-Drachedandion.csv
 LINK = ..\data\Nala-Drachedandion-inventory.csv
 
@@ -60,6 +61,7 @@ LINE = , 0.2, 0.81, 5.5, 0.81, #000000, 0.02
 HTMLFONT = B10, "Bookinsanity Remake", 10, B, #000000
 HTMLFONT = R8, "Bookinsanity Remake", 8, , #000000
 HTMLFONT = I8, "Bookinsanity Remake", 8, I, #000000
+HTMLFONT = B8, "Bookinsanity Remake", 8, B, #000000
 
 ; Image d0 is a placeholders for special weapons that have no damage,
 ; or if their damage is not associated with any dice.
@@ -138,7 +140,7 @@ ELSE
 HTMLTEXT = , "<R8>{{ExtraText?}}</R8>", 0.2, 3, 5.3, 30%
 ENDIF
 
-; TODO: display cost and weight somehow?
+HTMLTEXT = , "<B8>Cost:</B8> <R8>{{Cost?}}</R8><br><B8>Weight:</B8> <R8>{{Weight?}} lb.</R8>", 0.2, 6.9, 100%, 10%
 
 ; TODO: move this footer a bit lower
 LINE = , 0.2, 7.9, 5.5, 7.9, #000000, 0.02
