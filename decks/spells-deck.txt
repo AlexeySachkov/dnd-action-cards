@@ -65,7 +65,6 @@ HTMLFONT = I8, "Bookinsanity Remake", 8, I, #000000
 [computed_duration] = JOINIF([Duration], LENGTH([MaxConcentrationDuration]), >, 0, ", ")
 [computed_duration] = JOIN([computed_duration], [MaxConcentrationDuration])
 ; FIXME: better components representation (commas between components)
-; FIXME: display material components if they are listed
 [material_components] = JOINIF("", LENGTH([MaterialComponents]), >, 0, "\40\")
 [material_components] = JOINIF([material_components], LENGTH([MaterialComponents]), >, 0, [MaterialComponents])
 [material_components] = JOINIF([material_components], LENGTH([MaterialComponents]), >, 0, "\41\")
