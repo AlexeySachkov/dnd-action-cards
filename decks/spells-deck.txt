@@ -1,0 +1,84 @@
+LINK = ..\data\spells\spells.csv
+LINK = ..\data\Keya-Xyrric.csv
+
+; We aim to fit 4 cards on A4 page
+MARGINS = 0.5, 0.5, 0.5, 0.5
+PAGE = 21, 29.7
+; 3.5'' by 3.75''
+[CARD_WIDTH] = 9.3
+[CARD_HEIGHT] = 13.6
+[MARGIN] = 0.2
+[AVAILABLE_WIDTH] = {[CARD_WIDTH] - 2 * [MARGIN]}
+CARDSIZE = [CARD_WIDTH], [CARD_HEIGHT]
+DPI = 300
+
+FOOTER = , [CharacterName], RIGHT
+
+; List character's inventory here (comma-separated)
+[known_or_prepared_spells] = RANGELABEL("Guidance")
+; Sequence of card numbers which are present in the inventory
+[main_indexes_sequence] = LOOKUP([known_or_prepared_spells], [Name])
+; Range of cards which are present in the inventory
+[main_range] = RANGELABEL([main_indexes_sequence])
+
+; Remove the line below to print all the cards
+; TODO: check if it is possible to use LINKFILTER instead
+; PRINT = [main_range]
+; DISPLAY = ,,,,[main_range]
+
+BORDER = ROUNDED, #404040, 0.15, SOLID
+
+FONT="Mr Eaves SC Remake Medium",12,T,#000000
+; Note: assumption is that it will always be enough room for a spell title
+; It may not be a correct assimption
+TEXT = , [Name], [MARGIN], 0, [AVAILABLE_WIDTH], 0.9
+
+; Icon on the left describing whether this is an Action or a Bonus Action
+IF = INDEX("bonus action", [CastingTime]) > 0
+POLYGON = , 0.6, 0.2, 0.6, 0.6, 3, 0, #FF6600
+ELSEIF = INDEX("action", [CastingTime]) > 0
+CIRCLE = , 0.6, 0.2, 0.5, 0.5, #006600
+ENDIF
+
+IF = [Level] > 0
+POLYGON = , [CARD_WIDTH] - 1.2, 0.15, 0.6, 0.6, 6, 0, ##003366
+FONT="Mr Eaves SC Remake Medium",8,T,#FFFFFF
+; FIXME: convert level to a roman number
+TEXT = , [Level], [CARD_WIDTH] - 1.2, 0.15, 0.6, 0.6
+ENDIF
+
+LINE = , [MARGIN], 0.81, {[MARGIN] + [AVAILABLE_WIDTH]}, 0.81, #000000, 0.02
+
+HTMLIMAGE = , dice_img0, "..\assets\d0.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img4, "..\assets\d4.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img6, "..\assets\d6.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img8, "..\assets\d8.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img10, "..\assets\d10.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img12, "..\assets\d12.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img20, "..\assets\d20.png", 0.5, 0.5, P
+
+HTMLFONT = B10, "Bookinsanity Remake", 10, B, #000000
+HTMLFONT = R10, "Bookinsanity Remake", 10, , #000000
+HTMLFONT = I8, "Bookinsanity Remake", 8, I, #000000
+[computed_duration] = JOINIF([Duration], LENGTH([MaxConcentrationDuration]), >, 0, ", ")
+[computed_duration] = JOIN([computed_duration], [MaxConcentrationDuration])
+HTMLTEXT = , "<B10>Casting Time:</B10> <R10>{{CastingTime?}}</R10><br><B10>Range:</B10> <R10>{{Range?}}</R10><br><B10>Components:</B10> <R10>{{Components?}}</R10><br><B10>Duration:</B10> <R10>{{computed_duration?}}</R10>", [MARGIN], 1, [AVAILABLE_WIDTH], 40%
+HTMLFILE = , "..\data\spells\text\{TextFile?}", [MARGIN],3,[AVAILABLE_WIDTH],40%
+
+
+
+
+; TODO: move this footer a bit lower?
+LINE = , [MARGIN], [CARD_HEIGHT] - 1, {[MARGIN] + [AVAILABLE_WIDTH]}, [CARD_HEIGHT] - 1, #000000, 0.02
+FONT="Bookinsanity Remake",10,IT,#000000
+IF = [Level] = 0
+TEXT = , "CASESTRING({School?}, F) cantrip", [MARGIN], [CARD_HEIGHT] - 0.95, [AVAILABLE_WIDTH], 1, center, top
+ELSEIF = [Level] = 1
+TEXT = , "1st-level {School?}", [MARGIN], [CARD_HEIGHT] - 0.95, [AVAILABLE_WIDTH], 1, center, top
+ELSEIF = [Level] = 2
+TEXT = , "2nd-level {School?}", [MARGIN], [CARD_HEIGHT] - 0.95, [AVAILABLE_WIDTH], 1, center, top
+ELSEIF = [Level] = 3
+TEXT = , "3rd-level {School?}", [MARGIN], [CARD_HEIGHT] - 0.95, [AVAILABLE_WIDTH], 1, center, top
+ELSE
+TEXT = , "{Level?}th-level {School?}", [MARGIN], [CARD_HEIGHT] - 0.95, [AVAILABLE_WIDTH], 1, center, top
+ENDIF

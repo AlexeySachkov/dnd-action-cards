@@ -1,0 +1,4 @@
+Name,Level,School,CastingTime,Range,Components,MaterialComponents,Duration,MaxConcentrationDuration,Source,Page,TextFile
+Magic Missile,1,evocation,1 action,120 feet,VS,,Instantaneous,,PHB,257,magic-missile.html
+Guidance,0,divination,1 action,Touch,VS,,Concentration,up to 1 minute,PHB,248,guidance.html
+Ray of frost,0,evocation,1 action,60 feet,VS,,Instantaneous,,PHB,271,ray-of-frost.html
