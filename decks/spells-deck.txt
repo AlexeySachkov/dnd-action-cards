@@ -69,7 +69,12 @@ HTMLFONT = I8, "Bookinsanity Remake", 8, I, #000000
 [material_components] = JOINIF("", LENGTH([MaterialComponents]), >, 0, "\40\")
 [material_components] = JOINIF([material_components], LENGTH([MaterialComponents]), >, 0, [MaterialComponents])
 [material_components] = JOINIF([material_components], LENGTH([MaterialComponents]), >, 0, "\41\")
-HTMLTEXT = , "<B10>Casting Time:</B10> <R10>{{CastingTime?}}</R10><br><B10>Range:</B10> <R10>{{Range?}}</R10><br><B10>Components:</B10> <R10>{{Components?}} {{material_components?}}</R10><br><B10>Duration:</B10> <R10>{{computed_duration?}}</R10>", [MARGIN], 1, [AVAILABLE_WIDTH], 40%
+; FIXME: display "ritual" property next to casting time
+HTMLKEY = , "casting_time", "<B10>Casting Time:</B10> {CastingTime?}", R10
+HTMLKEY = , "range", "<B10>Range:</B10> {Range?}", R10
+HTMLKEY = , "components", "<B10>Components:</B10> {Components?} {material_components?}", R10
+HTMLKEY = , "duration", "<B10>Duration:</B10> {computed_duration?}", R10
+HTMLTEXT = , "casting_time<br>range<br>components<br>duration", [MARGIN], 1, [AVAILABLE_WIDTH], 40%
 ; FIXME: that y position of the spell text should be dynamic based on the
 ; spell "header" size. Ideally, the header should be substituted into the text
 ; html-file, but it is unsupported by nanDECK.
