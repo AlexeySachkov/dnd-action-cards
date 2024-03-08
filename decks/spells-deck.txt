@@ -69,7 +69,6 @@ HTMLFONT = I8, "Bookinsanity Remake", 8, I, #000000
 [material_components] = JOINIF("", LENGTH([MaterialComponents]), >, 0, "\40\")
 [material_components] = JOINIF([material_components], LENGTH([MaterialComponents]), >, 0, [MaterialComponents])
 [material_components] = JOINIF([material_components], LENGTH([MaterialComponents]), >, 0, "\41\")
-; FIXME: display "ritual" property next to casting time
 HTMLKEY = , "casting_time", "<B10>Casting Time:</B10> {CastingTime?}", R10
 HTMLKEY = , "range", "<B10>Range:</B10> {Range?}", R10
 HTMLKEY = , "components", "<B10>Components:</B10> {Components?} {material_components?}", R10
