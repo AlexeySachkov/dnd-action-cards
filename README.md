@@ -39,7 +39,7 @@ So, I just made a bunch of those cards for each party member, printed them, cut
 them out and sleeved. The result is quite good and they turned out to be pretty
 useful during the game.
 
-![IMG_6490 Large](https://github.com/AlexeySachkov/dnd-action-cards/assets/6417047/52ced16d-4242-4c62-b530-ebce52067b34)
+![image](https://github.com/AlexeySachkov/dnd-action-cards/assets/6417047/35908835-7f1f-40c5-99e7-d9c9db3a6254)
 
 _Left to right: original cards I did (scale was screwed up during printing),
 a version using a better printer (and the correct scale),
