@@ -1,9 +1,9 @@
-LINK = ..\data\spells\spells.csv
+LINK = ..\data\spells\druid-1.csv
 LINK = ..\data\Keya-Xyrric.csv
 
 ; We aim to fit 4 cards on A4 page
 MARGINS = 0.5, 0.5, 0.5, 0.5
-PAGE = 21, 29.7
+PAGE = 21, 29.7, PORTRAIT
 ; 3.5'' by 3.75''
 [CARD_WIDTH] = 9.3
 [CARD_HEIGHT] = 13.6
@@ -62,8 +62,19 @@ HTMLFONT = R10, "Bookinsanity Remake", 10, , #000000
 HTMLFONT = I8, "Bookinsanity Remake", 8, I, #000000
 [computed_duration] = JOINIF([Duration], LENGTH([MaxConcentrationDuration]), >, 0, ", ")
 [computed_duration] = JOIN([computed_duration], [MaxConcentrationDuration])
-HTMLTEXT = , "<B10>Casting Time:</B10> <R10>{{CastingTime?}}</R10><br><B10>Range:</B10> <R10>{{Range?}}</R10><br><B10>Components:</B10> <R10>{{Components?}}</R10><br><B10>Duration:</B10> <R10>{{computed_duration?}}</R10>", [MARGIN], 1, [AVAILABLE_WIDTH], 40%
-HTMLFILE = , "..\data\spells\text\{TextFile?}", [MARGIN],3,[AVAILABLE_WIDTH],40%
+; FIXME: better components representation (commas between components)
+; FIXME: display material components if they are listed
+[material_components] = JOINIF("", LENGTH([MaterialComponents]), >, 0, "\40\")
+[material_components] = JOINIF([material_components], LENGTH([MaterialComponents]), >, 0, [MaterialComponents])
+[material_components] = JOINIF([material_components], LENGTH([MaterialComponents]), >, 0, "\41\")
+HTMLTEXT = , "<B10>Casting Time:</B10> <R10>{{CastingTime?}}</R10><br><B10>Range:</B10> <R10>{{Range?}}</R10><br><B10>Components:</B10> <R10>{{Components?}} {{material_components?}}</R10><br><B10>Duration:</B10> <R10>{{computed_duration?}}</R10>", [MARGIN], 1, [AVAILABLE_WIDTH], 40%
+; FIXME: that y position of the spell text should be dynamic based on the
+; spell "header" size. Ideally, the header should be substituted into the text
+; html-file, but it is unsupported by nanDECK.
+; Discord discussions lead to a feature request to support "imporating" an
+; HTML file and turning it into HTMLKEY, which could be used here once it is
+; available
+HTMLFILE = , "..\data\spells\text\{TextFile?}", [MARGIN],3.5,[AVAILABLE_WIDTH],40%
 
 
 
