@@ -3,7 +3,7 @@ Animal Friendship,1,enchantment,1 action,30 feet,VSM,a morsel of food,24 hours,,
 Charm Person,1,echantment,1 action,30 feet,VS,,1 hour,,PHB,221,charm-person.html
 Create or Destroy Water,1,transmutation,1 action,30 feet,VSM,a drop of water if creating water or a few grains of sand if destroying it,Instantaneous,,PHB,229,create-or-destroy-water.html
 Cure Wounds,1,evocation,1 action,Touch,VS,,Instantaneous,,PHB,230,cure-wounds.html
-Detect Magic,1,divination (ritual),1 action,Self,VS,,Concentration,up to 10 minutes,PHB,231.detect-magic.html
+Detect Magic,1,divination (ritual),1 action,Self,VS,,Concentration,up to 10 minutes,PHB,231,detect-magic.html
 Detect Poison and Disease,1,divination (ritual),1 action,Self,VSM,a yew leaf,Concentration,up to 10 minutes,PHB,231,detect-poison-and-disease.html
 Entangle,1,conjuration,1 action,90 feet,VS,,Concentration,up to 1 minute,PHB,238,entangle.html
 Faerie Fire,1,evocation,1 action,60 feet,V,,Concentration,up to 1 minute,PHB,239,faerie-fire.html
