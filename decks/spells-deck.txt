@@ -40,11 +40,13 @@ ELSEIF = INDEX("action", [CastingTime]) > 0
 CIRCLE = , 0.6, 0.2, 0.5, 0.5, #006600
 ENDIF
 
+[DEC_levels] = 1|2|3|4|5|6|7|8|9
+[ROMAN_levels] = I|II|III|IV|V|VI|VII|VIII|IX
+[RomanLevel] = TRANSLATE([Level], [DEC_levels], [ROMAN_levels])
 IF = [Level] > 0
 POLYGON = , [CARD_WIDTH] - 1.2, 0.15, 0.6, 0.6, 6, 0, ##003366
 FONT="Mr Eaves SC Remake Medium",8,T,#FFFFFF
-; FIXME: convert level to a roman number
-TEXT = , [Level], [CARD_WIDTH] - 1.2, 0.15, 0.6, 0.6
+TEXT = , [RomanLevel], [CARD_WIDTH] - 1.2, 0.15, 0.6, 0.6
 ENDIF
 
 LINE = , [MARGIN], 0.81, {[MARGIN] + [AVAILABLE_WIDTH]}, 0.81, #000000, 0.02
