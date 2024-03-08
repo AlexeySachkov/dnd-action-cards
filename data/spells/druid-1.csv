@@ -1,0 +1,18 @@
+Name,Level,School,CastingTime,Range,Components,MaterialComponents,Duration,MaxConcentrationDuration,Source,Page,TextFile
+Animal Friendship,1,enchantment,1 action,30 feet,VSM,a morsel of food,24 hours,,PHB,212,animal-friendship.html
+Charm Person,1,echantment,1 action,30 feet,VS,,1 hour,,PHB,221,charm-person.html
+Create or Destroy Water,1,transmutation,1 action,30 feet,VSM,a drop of water if creating water or a few grains of sand if destroying it,Instantaneous,,PHB,229,create-or-destroy-water.html
+Cure Wounds,1,evocation,1 action,Touch,VS,Instantaneous,,PHB,230,cure-wounds.html
+Detect Magic,1,divination (ritual),1 action,Self,VS,Concentration,up to 10 minutes,PHB,231.detect-magic.html
+Detect Poison and Disease,1,divination (ritual),1 action,Self,VSM,a yew leaf,Concentration,up to 10 minutes,PHB,231,detect-poison-and-disease.html
+Entangle,1,conjuration,1 action,90 feet,VS,Concentration,up to 1 minute,PHB,238,entangle.html
+Faerie Fire,1,evocation,1 action,60 feet,V,Concentration,up to 1 minute,PHB,239,faerie-fire.html
+Fog Cloud,1,conjuration,1 action,120 feet,VS,Concentration,up to 1 hour,PHB,243,fog-cloud.html
+Goodberry,1,transmutation,1 action,Touch,VSM,a sprig of mistletoe,Instantaneous,,PHB,246,goodberry.html
+Healing Word,1,evocation,1 bonus action,60 feet,V,Instantaneous,,PHB,250,healing-word.html
+Jump,1,transmutation,1 action,Touch,VSM,a grasshopper's hind leg,1 minute,,PHB,254,jump.html
+Longstrider,1,transmutation,1 action,Touch,VSM,a pinch of dirt,1 hour,,PHB,256,longstrider.html
+Purify Food and Drink,1,transmutation (ritual),1 action,10 feet,VS,Instantaneous,,PHB,270,purify-food-and-drink.html
+Speak with Animals,1,divination (ritual),1 action,Self,VS,10 minutes,,PHB,277,speak-with-animals.html
+Thunderware,1,evocation,1 action,Self (15-foot cube),VS,Instantaneous,,PHB,282,thunderware.html
+
