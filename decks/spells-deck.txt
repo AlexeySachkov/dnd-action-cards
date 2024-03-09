@@ -98,3 +98,6 @@ TEXT = , "3rd-level {School?}", [MARGIN], [CARD_HEIGHT] - 0.95, [AVAILABLE_WIDTH
 ELSE
 TEXT = , "{Level?}th-level {School?}", [MARGIN], [CARD_HEIGHT] - 0.95, [AVAILABLE_WIDTH], 1, center, top
 ENDIF
+IF = [BookPage] > 0
+TEXT = , "{Source?}, page {BookPage?}", [MARGIN], [CARD_HEIGHT] - 0.55, [AVAILABLE_WIDTH], 1, center, top
+ENDIF

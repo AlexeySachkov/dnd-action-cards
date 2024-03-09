@@ -1,4 +1,4 @@
-Name,Level,School,CastingTime,Range,Components,MaterialComponents,Duration,MaxConcentrationDuration,Source,Page,TextFile
+Name,Level,School,CastingTime,Range,Components,MaterialComponents,Duration,MaxConcentrationDuration,Source,BookPage,TextFile
 Animal Friendship,1,enchantment,1 action,30 feet,VSM,a morsel of food,24 hours,,PHB,212,animal-friendship.html
 Charm Person,1,echantment,1 action,30 feet,VS,,1 hour,,PHB,221,charm-person.html
 Create or Destroy Water,1,transmutation,1 action,30 feet,VSM,a drop of water if creating water or a few grains of sand if destroying it,Instantaneous,,PHB,229,create-or-destroy-water.html
