@@ -4,8 +4,13 @@ LINK = ..\data\Nala-Drachedandion.csv
 LINK = ..\data\Nala-Drachedandion-inventory.csv
 
 PAGE = 21, 29.7, LANDSCAPE
-CARDSIZE = 5.7, 8.9
-DPI = 300
+[CARD_WIDTH] = 5.7
+[CARD_HEIGHT] = 8.9
+; How far away the card content should be from a card borders
+[CARD_MARGIN] = 0.2
+[CONTENT_WIDTH] = [CARD_WIDTH] - 2 * [CARD_MARGIN]
+CARDSIZE = [CARD_WIDTH], [CARD_HEIGHT]
+DPI = 600
 
 FOOTER = , [CharacterName], RIGHT
 
@@ -50,13 +55,13 @@ PRINT = [to_use]
 BORDER = ROUNDED, #404040, 0.15, SOLID
 
 FONT="Mr Eaves SC Remake Medium",12,T,#000000
-TEXT = , [Name], 0, 0, 100%, 10%
+TEXT = , [Name], [CARD_MARGIN], 0, [CONTENT_WIDTH], 0.9
 
 ; Icon on the left describing whether this is an Action or a Bonus Action
 POLYGON = [bonus_range], 0.3, 0.2, 0.6, 0.6, 3, 0, #FF6600
 CIRCLE = [main_range], 0.3, 0.2, 0.5, 0.5, #006600
 
-LINE = , 0.2, 0.81, 5.5, 0.81, #000000, 0.02
+LINE = , [CARD_MARGIN], 0.81, [CARD_WIDTH] - [CARD_MARGIN], 0.81, #000000, 0.02
 
 HTMLFONT = B10, "Bookinsanity Remake", 10, B, #000000
 HTMLFONT = R8, "Bookinsanity Remake", 8, , #000000
@@ -76,13 +81,13 @@ HTMLIMAGE = , dice_img12, "..\assets\d12.png", 0.5, 0.5, P
 HTMLIMAGE = , dice_img20, "..\assets\d20.png", 0.5, 0.5, P
 
 IF = INDEX("two-handed", [Properties]) > 0
-HTMLTEXT = , "<B10>Attack</B10> <I8>(use both hands)</I8>", 0.2, 1, 80%, 10%
+HTMLTEXT = , "<B10>Attack</B10> <I8>(use both hands)</I8>", [CARD_MARGIN], 1, [CONTENT_WIDTH], 10%
 ELSEIF = INDEX("thrown", [Properties]) > 0
-HTMLTEXT = [main_range], "<B10>Attack/throw</B10> <I8>(use the main hand)</I8>", 0.2, 1, 100%, 10%
-HTMLTEXT = [bonus_range], "<B10>Attack/throw</B10> <I8>(use the second hand)</I8>", 0.2, 1, 100%, 10%
+HTMLTEXT = [main_range], "<B10>Attack/throw</B10> <I8>(use the main hand)</I8>", [CARD_MARGIN], 1, [CONTENT_WIDTH], 10%
+HTMLTEXT = [bonus_range], "<B10>Attack/throw</B10> <I8>(use the second hand)</I8>", [CARD_MARGIN], 1, [CONTENT_WIDTH], 10%
 ELSE
-HTMLTEXT = [main_range], "<B10>Attack</B10> <I8>(use the main hand)</I8>", 0.2, 1, 80%, 10%
-HTMLTEXT = [bonus_range], "<B10>Attack</B10> <I8>(use the second hand)</I8>", 0.2, 1, 80%, 10%
+HTMLTEXT = [main_range], "<B10>Attack</B10> <I8>(use the main hand)</I8>", [CARD_MARGIN], 1, [CONTENT_WIDTH], 10%
+HTMLTEXT = [bonus_range], "<B10>Attack</B10> <I8>(use the second hand)</I8>", [CARD_MARGIN], 1, [CONTENT_WIDTH], 10%
 ENDIF
 
 [ATK_ability_flag] = JOINIF(, "ranged", @, [Type], "D", "S")
@@ -108,8 +113,8 @@ ENDIF
 
 ; Note: 'JOIN' should be used instead of 'CONCAT' is sequences are involved
 HTMLKEY = , "attack_formula", JOIN("d20 ", [sign], CALC(A, [ATK_MOD])), B10
-HTMLTEXT = , "<center>dice_img20 attack_formula</center>", 0, 1.45, 100%, 10%
-HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 1.95, 80%, 10%
+HTMLTEXT = , "<center>dice_img20 attack_formula</center>", [CARD_MARGIN], 1.45, [CONTENT_WIDTH], 10%
+HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", [CARD_MARGIN], 1.95, [CONTENT_WIDTH], 10%
 
 ; TODO: weapons with no damage (Net)
 [dice_prefix] = JOINIF(,[DamageDiceMultiplier], >, 1, [DamageDiceMultiplier],)
@@ -119,42 +124,42 @@ HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 1.95, 80%, 10%
 IF = [DamageDiceMultiplier] > 0
 HTMLKEY = [main_range], "damage_formula", JOIN([dice_prefix], "d", [DamageDice], [sign], CALC(A, [DMG_MOD])), B10
 HTMLKEY = [bonus_range], "damage_formula", JOIN([dice_prefix], "d", [DamageDice]), B10
-HTMLTEXT = , "<center>REPEAT(dice_img{{DamageDice?}}, {{DamageDiceMultiplier?}}) damage_formula</center>", 0, 2.4, 100%, 10%
+HTMLTEXT = , "<center>REPEAT(dice_img{{DamageDice?}}, {{DamageDiceMultiplier?}}) damage_formula</center>", [CARD_MARGIN], 2.4, [CONTENT_WIDTH], 10%
 ELSE
 ; TODO: should ability modifier be added to such weapons? (Blowgun)
 HTMLKEY = , "damage_formula", "{{DamageDice?}}", B10
-HTMLTEXT = , "<center>damage_formula</center>", 0, 2.4, 100%, 10%
+HTMLTEXT = , "<center>damage_formula</center>", [CARD_MARGIN], 2.4, [CONTENT_WIDTH], 10%
 ENDIF
 
 [versatile_dice_prefix] = JOINIF(,[VersatileDamageDiceMultiplier], >, 1, [VersatileDamageDiceMultiplier])
 HTMLKEY = , "versatile_formula", JOIN([versatile_dice_prefix], "d", [VersatileDamageDice], [sign], CALC(A, [DMG_MOD])), B10
 
 IF = INDEX("versatile", [Properties]) > 0
-HTMLTEXT = , "<B10>Or, attack</B10> <I8>(use both hands)</I8>", 0.2, 3.15, 80%, 10%
-HTMLTEXT = , "<center>dice_img20 attack_formula</center>", 0, 3.6, 100%, 10%
-HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", 0.2, 4.1, 80%, 10%
-HTMLTEXT = , "<center>dice_img{{VersatileDamageDice?}} versatile_formula</center>", 0, 4.5, 100%, 10%
-HTMLTEXT = , "<R8>{{ExtraText?}}</R8>", 0.2, 5.2, 5.3, 30%
+HTMLTEXT = , "<B10>Or, attack</B10> <I8>(use both hands)</I8>", [CARD_MARGIN], 3.15, [CONTENT_WIDTH], 10%
+HTMLTEXT = , "<center>dice_img20 attack_formula</center>", [CARD_MARGIN], 3.6, [CONTENT_WIDTH], 10%
+HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", [CARD_MARGIN], 4.1, [CONTENT_WIDTH], 10%
+HTMLTEXT = , "<center>dice_img{{VersatileDamageDice?}} versatile_formula</center>", [CARD_MARGIN], 4.5, [CONTENT_WIDTH], 10%
+HTMLTEXT = , "<R8>{{ExtraText?}}</R8>", [CARD_MARGIN], 5.2, [CONTENT_WIDTH], 30%
 ELSE
 ; TODO: develop a mechanism to automatically calculate Y position
-HTMLTEXT = , "<R8>{{ExtraText?}}</R8>", 0.2, 3, 5.3, 30%
+HTMLTEXT = , "<R8>{{ExtraText?}}</R8>", [CARD_MARGIN], 3, [CONTENT_WIDTH], 30%
 ENDIF
 
-HTMLTEXT = , "<B8>Cost:</B8> <R8>{{Cost?}}</R8><br><B8>Weight:</B8> <R8>{{Weight?}} lb.</R8>", 0.2, 6.9, 100%, 10%
+HTMLTEXT = , "<B8>Cost:</B8> <R8>{{Cost?}}</R8><br><B8>Weight:</B8> <R8>{{Weight?}} lb.</R8>", [CARD_MARGIN], 6.9, [CONTENT_WIDTH], 10%
 
 ; TODO: move this footer a bit lower
-LINE = , 0.2, 7.9, 5.5, 7.9, #000000, 0.02
+LINE = , [CARD_MARGIN], 7.9, [CARD_WIDTH] - [CARD_MARGIN], 7.9, #000000, 0.02
 FONT="Bookinsanity Remake",10,IT,#000000
 [UPD_Type] = CASESTRING([Type], L)
 [UPD_Proficiency] = CASESTRING([Proficiency], F)
 [top_line] = JOIN([UPD_Proficiency], " ", [UPD_Type], " weapon")
 IF = "Ranged" = [Type]
-TEXT = , "{UPD_Proficiency?} {UPD_Type?} weapon ({Range?})", 0, 7.9, 100%, 10%, center, top
+TEXT = , "{UPD_Proficiency?} {UPD_Type?} weapon ({Range?})", [CARD_MARGIN], 7.9, [CONTENT_WIDTH], 10%, center, top
 ELSE
-TEXT = , "{UPD_Proficiency?} {UPD_Type?} weapon", 0, 7.9, 100%, 10%, center, top
+TEXT = , "{UPD_Proficiency?} {UPD_Type?} weapon", [CARD_MARGIN], 7.9, [CONTENT_WIDTH], 10%, center, top
 ENDIF
 ; ";" can't be used directly, but instead its ANSII encoding should be used
 [UPD_Properties] = CASESTRING(REPLACE([Properties], "\59\", ", "), F)
 [UPD_Properties] = REPLACE([UPD_Properties], "Thrown", "Thrown ({Range?})")
-TEXT = , [UPD_Properties], 0, 8.25, 100%, 10%, center, top
+TEXT = , [UPD_Properties], [CARD_MARGIN], 8.25, [CONTENT_WIDTH], 10%, center, top
 
