@@ -68,11 +68,14 @@ The project features two decks at the moment:
   for all non-magical weapons available in [SRD][srd] and custom magic weapons.
 - [armor deck](decks/armor-deck.txt) which is capable of generating cards for
   all non-magical armor available in [SRD][srd].
+- [spells deck](decks/spells-deck.txt) which is capable of generating cards for
+  spells. Note: only limited amount of spells is available.
 
-Both decks use a character data as an input and tailor generated cards to that
-character. This includes automaticaly calculating all attack and damage bonuses,
-automatically calculating armor class and filtering cards to only generate cards
-for those items, which are present in a character's inventory.
+Weapons and armor decks use a character data as an input and tailor generated
+cards to that character. This includes automaticaly calculating all attack and
+damage bonuses, automatically calculating armor class and filtering cards to
+only generate cards for those items, which are present in a character's
+inventory.
 
 See example of a ["character sheet"](data/Orianna.csv) and of a
 [character inventory](data/Orianna-inventory.csv).
@@ -90,7 +93,6 @@ In no particular order:
 * Customization options for cards (like no dice icons, different card size)
 * Support for feats (racial, class, etc.)
 * Support for magic items
-* Support for spells
 
 ## License
 
