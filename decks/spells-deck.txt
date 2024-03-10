@@ -1,12 +1,12 @@
-LINK = ..\data\spells\druid-1.csv
+LINK = ..\data\spells\wizard-0.csv
 LINK = ..\data\Keya-Xyrric.csv
 
 ; We aim to fit 4 cards on A4 page
-MARGINS = 0.5, 0.5, 0.5, 0.5
+MARGINS = 1, 1, 0.3, 0.3
 PAGE = 21, 29.7, PORTRAIT
-; 3.5'' by 3.75''
+; 3 11/16'' by 5 3/4''
 [CARD_WIDTH] = 9.3
-[CARD_HEIGHT] = 13.6
+[CARD_HEIGHT] = 14.5
 [MARGIN] = 0.2
 [AVAILABLE_WIDTH] = {[CARD_WIDTH] - 2 * [MARGIN]}
 CARDSIZE = [CARD_WIDTH], [CARD_HEIGHT]
