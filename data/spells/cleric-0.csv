@@ -1,0 +1,3 @@
+Name,Level,School,CastingTime,Range,Components,MaterialComponents,Duration,MaxConcentrationDuration,Source,BookPage,TextFile
+Guidance,0,divination,1 action,Touch,VS,,Concentration,up to 1 minute,PHB,248,guidance.html
+Thaumaturgy,0,transmutation,1 action,30 feet,V,,Up to 1 minute,,PHB,282,thaumaturgy.html
