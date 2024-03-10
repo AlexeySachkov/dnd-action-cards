@@ -1,4 +1,4 @@
-LINK = ..\data\spells\wizard-0.csv
+LINK = ..\data\spells\cleric-0.csv
 LINK = ..\data\Keya-Xyrric.csv
 
 ; We aim to fit 4 cards on A4 page
@@ -79,7 +79,7 @@ HTMLTEXT = , "casting_time<br>range<br>components<br>duration", [MARGIN], 1, [AV
 ; Discord discussions lead to a feature request to support "imporating" an
 ; HTML file and turning it into HTMLKEY, which could be used here once it is
 ; available
-HTMLFILE = , "..\data\spells\text\{TextFile?}", [MARGIN],3.5,[AVAILABLE_WIDTH],40%
+HTMLFILE = , "..\data\spells\text\{TextFile?}", [MARGIN],3.5,[AVAILABLE_WIDTH],70%
 
 
 
