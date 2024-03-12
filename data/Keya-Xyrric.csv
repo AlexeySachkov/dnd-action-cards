@@ -1,2 +1,2 @@
-CharacterName,STR,DEC,CON,INT,WIS,CHA,ProficiencyBonus
-Keya Xyrric,13,10,14,10,16,12,2
+CharacterName,Class,STR,DEX,CON,INT,WIS,CHA,ProficiencyBonus,WeaponProficiency
+Keya Xyrric,Druid,13,10,14,10,16,12,2,club\59\dagger\59\dart\59\javelin\59\mace\59\quarterstaff\59\scimitar\59\sickle\59\sling\59\spear

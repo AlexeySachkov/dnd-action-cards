@@ -1,2 +1,2 @@
-Name,Type,Proficiency,Cost,DamageDiceMultiplier,DamageDice,DamageType,Weight,Properties,VersatileDamageDiceMultiplier,VersatileDamageDice,Range,Bonus,Rarity,ExtraText
-The Edict Blade,Melee,Martial,300 gp,1,8,slashing,3,versatile\59\magic,1,10,,1,uncommon,Add extra +1 to attack and damage rolls if fighting goblinoids
+Name,Type,Kind,Proficiency,Cost,DamageDiceMultiplier,DamageDice,DamageType,Weight,Properties,VersatileDamageDiceMultiplier,VersatileDamageDice,Range,Bonus,Rarity,ExtraText
+The Edict Blade,Melee,longsword,Martial,300 gp,1,8,slashing,3,versatile\59\magic,1,10,,1,uncommon,Add extra +1 to attack and damage rolls if fighting goblinoids

@@ -1,7 +1,7 @@
 ; LINK = ..\data\magic-weapons-1.csv
-LINK = ..\data\Weapons.csv
-LINK = ..\data\Nala-Drachedandion.csv
-LINK = ..\data\Nala-Drachedandion-inventory.csv
+LINK = ..\data\weapons.csv
+LINK = ..\data\Keya-Xyrric.csv
+LINK = ..\data\Keya-Xyrric-inventory.csv
 
 PAGE = 21, 29.7, LANDSCAPE
 [CARD_WIDTH] = 5.7
@@ -30,15 +30,9 @@ CARDS = {2 * (Name)}
 [light_weapons_range] = LABELRANGE([Properties], "*light*")
 ; Range of light weapons which are present in the inventory
 [inventory_light_weapons_range] = RANGEINT([light_weapons_range], [main_range])
-; If character has no light weapons in their inventory, the range above will be
-; empty and it won't be possible to convert it to a sequence using RANGELABEL
-; function
-[number_of_light_weapons_in_inventory] = RANGECOUNT([inventory_light_weapons_range])
-[more_than_zero_light_weapons_in_inventory] = [number_of_light_weapons_in_inventory]>0
 
 ; Same as above, but sequence
-[inventory_light_weapons_sequence]%[more_than_zero_light_weapons_in_inventory] = RANGELABEL([inventory_light_weapons_range])
-[inventory_light_weapons_sequence]%=
+[inventory_light_weapons_sequence] = RANGELABEL([inventory_light_weapons_range])
 
 ; Range of cards which are present in the inventory, but taken from the second
 ; half of the deck that is intended for bonus action cards (light weapons)
@@ -106,14 +100,17 @@ ENDIF
 ; finesse melee weapons
 [ATK_ability] = JOINIF([ATK_ability], [ATK_ability_flag], =, "SD", CALC(M, [STR], [DEX]))
 
+[ShouldApplyProfBonus] = JOINIF(, INDEX([Kind], [WeaponProficiency]), >, 0, "1")
+[ShouldApplyProfBonus] = JOINIF([ShouldApplyProfBonus], INDEX([Proficiency], [WeaponProficiency]), >, 0, "1")
+[CalculatedProfBonus] = JOINIF(, INDEX("1", [ShouldApplyProfBonus]), >, 0, [ProficiencyBonus], 0)
 
-; TODO: A character may not be proficient with a weapon
-[ATK_MOD] = ROUND({([ATK_ability] - 10) / 2 + [ProficiencyBonus] + [Bonus]}, 0, DOWN)
+[ATK_MOD] = ROUND({([ATK_ability] - 10) / 2 + [CalculatedProfBonus] + [Bonus]}, 0, DOWN)
 [sign] = JOINIF(,[ATK_MOD], >, 0, " + ", "")
 [sign] = JOINIF([sign], [ATK_MOD], <, 0, " - ", "")
+[ATK_MOD] = JOINIF(, CALC(A, [ATK_MOD]), >, 0, CALC(A, [ATK_MOD]), "")
 
 ; Note: 'JOIN' should be used instead of 'CONCAT' is sequences are involved
-HTMLKEY = , "attack_formula", JOIN("d20 ", [sign], CALC(A, [ATK_MOD])), B10
+HTMLKEY = , "attack_formula", JOIN("d20 ", [sign], [ATK_MOD]), B10
 HTMLTEXT = , "<center>dice_img20 attack_formula</center>", [CARD_MARGIN], 1.45, [CONTENT_WIDTH], 10%
 HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", [CARD_MARGIN], 1.95, [CONTENT_WIDTH], 10%
 
