@@ -1,2 +1,2 @@
-CharacterName,STR,DEX,CON,INT,WIS,CHA,ProficiencyBonus
-Orianna,15,14,14,10,10,11,2
+CharacterName,STR,DEX,CON,INT,WIS,CHA,ProficiencyBonus,WeaponProficiency
+Orianna,15,14,14,10,10,11,2,simple;martial
