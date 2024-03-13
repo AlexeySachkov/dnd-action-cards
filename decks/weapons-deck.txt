@@ -1,7 +1,7 @@
-LINK = ..\data\magic-weapons-1.csv
-;LINK = ..\data\weapons.csv
-LINK = ..\data\Nala-Drachedandion.csv
-LINK = ..\data\Nala-Drachedandion-inventory.csv
+; LINK = ..\data\magic-weapons-1.csv
+LINK = ..\data\weapons.csv
+LINK = ..\data\Finarfin.csv
+LINK = ..\data\Finarfin-inventory.csv
 
 PAGE = 21, 29.7, LANDSCAPE
 [CARD_WIDTH] = 5.7
@@ -122,8 +122,9 @@ HTMLTEXT = , "<B10>Damage</B10> <I8>({{DamageType?}})</I8>", [CARD_MARGIN], 1.95
 [DMG_MOD] = ROUND({([ATK_ability] - 10) / 2 + [Bonus]}, 0, DOWN)
 [sign] = JOINIF(,[DMG_MOD], >, 0, " + ", "")
 [sign] = JOINIF([sign], [DMG_MOD], <, 0, " - ", "")
+[DMG_MOD] = JOINIF(, CALC(A, [DMG_MOD]), >, 0, CALC(A, [DMG_MOD]), "")
 IF = [DamageDiceMultiplier] > 0
-HTMLKEY = [main_range], "damage_formula", JOIN([dice_prefix], "d", [DamageDice], [sign], CALC(A, [DMG_MOD])), B10
+HTMLKEY = [main_range], "damage_formula", JOIN([dice_prefix], "d", [DamageDice], [sign], [DMG_MOD]), B10
 HTMLKEY = [bonus_range], "damage_formula", JOIN([dice_prefix], "d", [DamageDice]), B10
 HTMLTEXT = , "<center>REPEAT(dice_img{{DamageDice?}}, {{DamageDiceMultiplier?}}) damage_formula</center>", [CARD_MARGIN], 2.4, [CONTENT_WIDTH], 10%
 ELSE
@@ -133,7 +134,7 @@ HTMLTEXT = , "<center>damage_formula</center>", [CARD_MARGIN], 2.4, [CONTENT_WID
 ENDIF
 
 [versatile_dice_prefix] = JOINIF(,[VersatileDamageDiceMultiplier], >, 1, [VersatileDamageDiceMultiplier])
-HTMLKEY = , "versatile_formula", JOIN([versatile_dice_prefix], "d", [VersatileDamageDice], [sign], CALC(A, [DMG_MOD])), B10
+HTMLKEY = , "versatile_formula", JOIN([versatile_dice_prefix], "d", [VersatileDamageDice], [sign], [DMG_MOD]), B10
 
 IF = INDEX("versatile", [Properties]) > 0
 HTMLTEXT = , "<B10>Or, attack</B10> <I8>(use both hands)</I8>", [CARD_MARGIN], 3.15, [CONTENT_WIDTH], 10%
