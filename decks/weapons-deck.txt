@@ -1,7 +1,7 @@
-; LINK = ..\data\magic-weapons-1.csv
-LINK = ..\data\weapons.csv
-LINK = ..\data\Keya-Xyrric.csv
-LINK = ..\data\Keya-Xyrric-inventory.csv
+LINK = ..\data\magic-weapons-1.csv
+;LINK = ..\data\weapons.csv
+LINK = ..\data\Nala-Drachedandion.csv
+LINK = ..\data\Nala-Drachedandion-inventory.csv
 
 PAGE = 21, 29.7, LANDSCAPE
 [CARD_WIDTH] = 5.7
@@ -33,6 +33,9 @@ CARDS = {2 * (Name)}
 
 ; Same as above, but sequence
 [inventory_light_weapons_sequence] = RANGELABEL([inventory_light_weapons_range])
+; FIXME: if inventory_light_weapons_range is empty, it will be represented as -1
+; This in turn will produce non-empty sequence and [bonus_range] would point
+; to a random card.
 
 ; Range of cards which are present in the inventory, but taken from the second
 ; half of the deck that is intended for bonus action cards (light weapons)
@@ -101,7 +104,7 @@ ENDIF
 [ATK_ability] = JOINIF([ATK_ability], [ATK_ability_flag], =, "SD", CALC(M, [STR], [DEX]))
 
 [ShouldApplyProfBonus] = JOINIF(, INDEX([Kind], [WeaponProficiency]), >, 0, "1")
-[ShouldApplyProfBonus] = JOINIF([ShouldApplyProfBonus], INDEX([Proficiency], [WeaponProficiency]), >, 0, "1")
+[ShouldApplyProfBonus] = JOINIF([ShouldApplyProfBonus], INDEX(CASESTRING([Proficiency], L), [WeaponProficiency]), >, 0, "1")
 [CalculatedProfBonus] = JOINIF(, INDEX("1", [ShouldApplyProfBonus]), >, 0, [ProficiencyBonus], 0)
 
 [ATK_MOD] = ROUND({([ATK_ability] - 10) / 2 + [CalculatedProfBonus] + [Bonus]}, 0, DOWN)
