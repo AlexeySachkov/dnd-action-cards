@@ -1,0 +1,18 @@
+Name,Level,School,CastingTime,Range,Components,MaterialComponents,Duration,MaxConcentrationDuration,Source,BookPage,TextFile
+Animal Messenger,2,enchantement (ritual),1 action,30 feet,VSM,a morsel of food,24 hours,,PHB,???,animal-messenger.html
+Barkskin,2,transmutation,1 action,Touch,VSM,a handful of oak bark,Concentration,up to 1 hour,PHB,???,barkskin.html
+Darkvision,2,transmutation,1 action,Touch,VSM,either a pinch of dried carrot or an agate,8 hours,,PHB,???,darkvision.html
+Enchance Ability,2,transmutation,1 action,Touch,VSM,fur or feather from a beast,Concentration,up to 1 hour,PHB,???,enchance-ability.html
+Find Traps,2,divination,1 action,120 feet,VS,,Instantaneous,,PHB,???,find-traps.html
+Flame Blade,2,evocation,1 bonus action,Self,VSM,leaf of sumac,Concentration,up to 10 minutes,PHB,???,flame-blade.html
+Flaming Sphere,2,conjuration,1 action,60 feet,VSM,a bit of tallow\44\ a pinch of brimstone\44\ and a dusting of powdered iron,Concentration,up to 1 minute,PHB,???,flaming-sphere.html
+Gust of Wind,2,evocation,1 action,Self (60-foot line),VSM,a legume seed,Concentration,up to 1 minute,PHB,???,gust-of-wind.html
+Heat Metal,2,transmutation,1 action,60 feet,VSM,a piece of iron and a flame,Concentration,up to 1 minute,PHB,???,heat-metal.html
+Hold Person,2,enchantment,1 action,60 feet,VSM,a small\44\ straight piece of iron,Concentration,up to 1 minute,PHB,???,hold-person.html
+Lesser Restoration,2,abjuration,1 action,Touch,VS,,Instantaneous,,PHB,???,lesser-restoration.html
+Locate Animals or Plants,2,divination (ritual),1 action,Self,VSM,a bit of fur from bloodhound,Instantaneous,,PHB,???,locate-animals-or-plants.html
+Locate Object,2,divination,1 action,Self,VSM,a forked twig,Concentration,up to 10 minutes,,PHB,???,locate-object.html
+Moonbeam,2,evocation,1 action,120 feet,VSM,several seeds of any moonseed plant and a piece of opalescent feldspar,Concentration,up to 1 minute,PHB,???,moonbeam.html
+Pass without Trace,2,abjuration,1 action,Self,VSM,ashes from a burned leaf of mistletoe and a sprig of spruce,Concentration,up to 1 hour,PHB,???,pass-without-trace.html
+Protection from Poison,2,abjuration,1 action,Touch,VS,,1 hour,,PHB,???,protection-from-poison.html
+Spike Growth,2,transmutation,1 action,150 feet,VSM,seven sharp thorns or seven small twigs\44\ each sharpened to a point,Concentration,up to 10 minutes,PHB,???,spike-growth.html
