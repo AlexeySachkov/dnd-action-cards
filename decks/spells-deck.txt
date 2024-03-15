@@ -1,4 +1,4 @@
-LINK = ..\data\spells\druid-1.csv
+LINK = ..\data\spells\druid-2.csv
 LINK = ..\data\Keya-Xyrric.csv
 
 ; We aim to fit 4 cards on A4 page
@@ -7,8 +7,11 @@ PAGE = 21, 29.7, PORTRAIT
 ; 3 11/16'' by 5 3/4''
 [CARD_WIDTH] = 9.3
 [CARD_HEIGHT] = 14.5
+[CARD_HEADER_HEIGHT] = 0.81
+[CARD_FOOTER_HEIGHT] = 1
 [MARGIN] = 0.2
 [AVAILABLE_WIDTH] = {[CARD_WIDTH] - 2 * [MARGIN]}
+[CARD_CONTENT_HEIGHT] = [CARD_HEIGHT] - [CARD_HEADER_HEIGHT] - [CARD_FOOTER_HEIGHT]
 CARDSIZE = [CARD_WIDTH], [CARD_HEIGHT]
 DPI = 300
 
@@ -49,7 +52,7 @@ FONT="Mr Eaves SC Remake Medium",8,T,#FFFFFF
 TEXT = , [RomanLevel], [CARD_WIDTH] - 1.2, 0.15, 0.6, 0.6
 ENDIF
 
-LINE = , [MARGIN], 0.81, {[MARGIN] + [AVAILABLE_WIDTH]}, 0.81, #000000, 0.02
+LINE = , [MARGIN], [CARD_HEADER_HEIGHT], {[MARGIN] + [AVAILABLE_WIDTH]}, [CARD_HEADER_HEIGHT], #000000, 0.02
 
 HTMLIMAGE = , dice_img0, "..\assets\d0.png", 0.5, 0.5, P
 HTMLIMAGE = , dice_img4, "..\assets\d4.png", 0.5, 0.5, P
@@ -74,11 +77,11 @@ HTMLKEY = , "components", "<B10>Components:</B10> {Components?} {material_compon
 HTMLKEY = , "duration", "<B10>Duration:</B10> {computed_duration?}", R10
 ; Note: FILEREAD is only available since nanDECK 1.28 beta 15
 HTMLKEY = , "spell_text", FILEREAD("..\data\spells\text\{TextFile?}"), R10
-HTMLTEXT = , "casting_time<br>range<br>components<br>duration<br><br>spell_text", [MARGIN], 1, [AVAILABLE_WIDTH], 70%
+HTMLTEXT = , "casting_time<br>range<br>components<br>duration<br><br>spell_text", [MARGIN], 1, [AVAILABLE_WIDTH], [CARD_CONTENT_HEIGHT]
 
 
 ; TODO: move this footer a bit lower?
-LINE = , [MARGIN], [CARD_HEIGHT] - 1, {[MARGIN] + [AVAILABLE_WIDTH]}, [CARD_HEIGHT] - 1, #000000, 0.02
+LINE = , [MARGIN], [CARD_HEIGHT] - [CARD_FOOTER_HEIGHT], {[MARGIN] + [AVAILABLE_WIDTH]}, [CARD_HEIGHT] - [CARD_FOOTER_HEIGHT], #000000, 0.02
 FONT="Bookinsanity Remake",10,IT,#000000
 IF = [Level] = 0
 TEXT = , "CASESTRING({School?}, F) cantrip", [MARGIN], [CARD_HEIGHT] - 0.95, [AVAILABLE_WIDTH], 1, center, top
