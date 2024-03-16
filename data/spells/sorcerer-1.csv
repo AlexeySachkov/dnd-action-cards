@@ -1,0 +1,5 @@
+Name,Level,School,CastingTime,Range,Components,MaterialComponents,Duration,MaxConcentrationDuration,Source,BookPage,TextFile
+Charm Person,1,enchantment,1 action,30 feet,VS,,1 hour,,PHB,221,charm-person.html
+Comprehend Languages,1,divination (ritual),1 action,Self,VSM,a pinch of soot and salt,1 hour,,PHB,224,comprehend-languages.html
+Thunderware,1,evocation,1 action,Self (15-foot cube),VS,,Instantaneous,,PHB,282,thunderware.html
+
