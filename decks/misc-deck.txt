@@ -1,0 +1,52 @@
+LINK = ..\data\misc.csv
+
+
+PAGE = 21, 29.7, LANDSCAPE
+[CARD_WIDTH] = 5.7
+[CARD_HEIGHT] = 8.9
+; How far away the card content should be from a card borders
+[CARD_MARGIN] = 0.2
+[CONTENT_WIDTH] = [CARD_WIDTH] - 2 * [CARD_MARGIN]
+CARDSIZE = [CARD_WIDTH], [CARD_HEIGHT]
+DPI = 600
+
+BORDER = ROUNDED, #202020, 0.2, SOLID
+
+FONT="Mr Eaves SC Remake Medium",12,T,#000000
+TEXT = , [Title], [CARD_MARGIN], 0, [CONTENT_WIDTH], 0.9
+
+IF = [ActionIcon] = "B"
+POLYGON = , 0.3, 0.2, 0.6, 0.6, 3, 0, #FF6600
+ENDIF
+IF = [ActionIcon] = "A"
+CIRCLE = , 0.3, 0.2, 0.5, 0.5, #006600
+ENDIF
+
+LINE = , [CARD_MARGIN], 0.81, [CARD_WIDTH] - [CARD_MARGIN], 0.81, #000000, 0.02
+
+HTMLFONT = B10, "Bookinsanity Remake", 10, B, #000000
+HTMLFONT = R10, "Bookinsanity Remake", 10, , #000000
+HTMLFONT = R8, "Bookinsanity Remake", 8, , #000000
+HTMLFONT = I8, "Bookinsanity Remake", 8, I, #000000
+HTMLFONT = B8, "Bookinsanity Remake", 8, B, #000000
+
+; Image d0 is a placeholders for special weapons that have no damage,
+; or if their damage is not associated with any dice.
+; TODO: align images with the text better. It may require using a different
+; environment
+HTMLIMAGE = , dice_img0, "..\assets\d0.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img4, "..\assets\d4.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img6, "..\assets\d6.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img8, "..\assets\d8.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img10, "..\assets\d10.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img12, "..\assets\d12.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img20, "..\assets\d20.png", 0.5, 0.5, P
+
+HTMLKEY = , "card_text", FILEREAD("..\data\misc-cards\{TextFile?}"), R10
+HTMLTEXT = , "card_text", [CARD_MARGIN], 1, [CONTENT_WIDTH], 80%
+
+LINE = , [CARD_MARGIN], 7.95, [CARD_WIDTH] - [CARD_MARGIN], 7.95, #000000, 0.02
+FONT="Bookinsanity Remake",10,IT,#000000
+TEXT = , "{FooterLine1?}", [CARD_MARGIN], 8, [CONTENT_WIDTH], 10%, center, top
+TEXT = , "{FooterLine2?}", [CARD_MARGIN], 8.35, [CONTENT_WIDTH], 10%, center, top
+
