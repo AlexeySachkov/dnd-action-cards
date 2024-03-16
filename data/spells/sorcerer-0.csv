@@ -1,5 +1,6 @@
 Name,Level,School,CastingTime,Range,Components,MaterialComponents,Duration,MaxConcentrationDuration,Source,BookPage,TextFile
 Acid Splash,0,conjuration,1 action,60 feet,VS,,Instantaneous,,PHB,211,acid-splash.html
 Fire Bolt,0,evocation,1 action,120 feet,VS,,Instantaneous,,PHB,242,fire-bolt.html
+Light,0,evocation,1 action,Touch,VM,a firefly or phosphorescent moss,1 hour,,PHB,255,light.html
 Minor Illusion,0,illusion,1 action,30 feet,SM,a bit of fleece,1 minute,,PHB,260,minor-illusion.html
 Ray of Frost,0,evocation,1 action,60 feet,VS,,Instantaneous,,PHB,271,ray-of-frost.html
