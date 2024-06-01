@@ -1,7 +1,7 @@
 Title,ActionIcon,TextFile,FooterLine1,FooterLine2
 Dueling,,dueling.html,Fighting Style,PHB\44\ page 72
 Second Wind,B,second-wind.html,Fighter class feature,PHB\44\ page 72
-Action Surge,A,action-surge.html,Fighter class feature,PHB\44\ page 72
+Action Surge,,action-surge.html,Fighter class feature,PHB\44\ page 72
 Reckless Attack,,reckless-attack.html,Barbarian class feature,PHB\44\ page 48
 Danger Sense,,danger-sense.html,Barbarian class feature,PHB\44\ page 48
 Heal,B,combat-wild-shape-heal.html,Circle of the Moon Druid feature,PHB\44\ page 69
