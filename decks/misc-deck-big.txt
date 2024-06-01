@@ -1,0 +1,56 @@
+LINK = ..\data\misc-big.csv
+
+; We aim to fit 4 cards on A4 page
+MARGINS = 1, 1, 0.3, 0.3
+PAGE = 21, 29.7, PORTRAIT
+; 3 11/16'' by 5 3/4''
+[CARD_WIDTH] = 9.3
+[CARD_HEIGHT] = 14.5
+[CARD_HEADER_HEIGHT] = 0.81
+[CARD_FOOTER_HEIGHT] = 1
+[MARGIN] = 0.2
+[AVAILABLE_WIDTH] = {[CARD_WIDTH] - 2 * [MARGIN]}
+[CARD_CONTENT_HEIGHT] = [CARD_HEIGHT] - [CARD_HEADER_HEIGHT] - [CARD_FOOTER_HEIGHT]
+CARDSIZE = [CARD_WIDTH], [CARD_HEIGHT]
+DPI = 600
+
+BORDER = ROUNDED, #202020, 0.2, SOLID
+
+FONT="Mr Eaves SC Remake Medium",12,T,#000000
+TEXT = , [Title], [MARGIN], 0, [AVAILABLE_WIDTH], 0.9
+
+IF = [ActionIcon] = "B"
+POLYGON = , 0.3, 0.2, 0.6, 0.6, 3, 0, #FF6600
+ENDIF
+IF = [ActionIcon] = "A"
+CIRCLE = , 0.3, 0.2, 0.5, 0.5, #006600
+ENDIF
+
+LINE = , [MARGIN], [CARD_HEADER_HEIGHT], {[MARGIN] + [AVAILABLE_WIDTH]}, [CARD_HEADER_HEIGHT], #000000, 0.02
+
+HTMLFONT = B10, "Bookinsanity Remake", 10, B, #000000
+HTMLFONT = R10, "Bookinsanity Remake", 10, , #000000
+HTMLFONT = R8, "Bookinsanity Remake", 8, , #000000
+HTMLFONT = I8, "Bookinsanity Remake", 8, I, #000000
+HTMLFONT = B8, "Bookinsanity Remake", 8, B, #000000
+
+; Image d0 is a placeholders for special weapons that have no damage,
+; or if their damage is not associated with any dice.
+; TODO: align images with the text better. It may require using a different
+; environment
+HTMLIMAGE = , dice_img0, "..\assets\d0.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img4, "..\assets\d4.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img6, "..\assets\d6.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img8, "..\assets\d8.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img10, "..\assets\d10.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img12, "..\assets\d12.png", 0.5, 0.5, P
+HTMLIMAGE = , dice_img20, "..\assets\d20.png", 0.5, 0.5, P
+
+HTMLKEY = , "card_text", FILEREAD("..\data\misc-cards\{TextFile?}"), R10
+HTMLTEXT = , "card_text", [MARGIN], 1, [AVAILABLE_WIDTH], [CARD_CONTENT_HEIGHT]
+
+LINE = , [MARGIN], [CARD_HEIGHT] - [CARD_FOOTER_HEIGHT], {[MARGIN] + [AVAILABLE_WIDTH]}, [CARD_HEIGHT] - [CARD_FOOTER_HEIGHT], #000000, 0.02
+FONT="Bookinsanity Remake",10,IT,#000000
+TEXT = , "{FooterLine1?}", [MARGIN], [CARD_HEIGHT] - 0.95, [AVAILABLE_WIDTH], 1, center, top
+TEXT = , "{FooterLine2?}", [MARGIN], [CARD_HEIGHT] - 0.55, [AVAILABLE_WIDTH], 1, center, top
+
